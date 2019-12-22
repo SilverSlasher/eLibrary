@@ -18,9 +18,9 @@ namespace eLibraryClasses.Models
 
         public string EmailAddress { get; set; }
 
-        public List<int> ReadBooks { get; set; }
+        public List<BookModel> ReadBooks { get; set; }
 
-        public List<int> FavoriteAuthors { get; set; }
+        public List<string> FavoriteAuthors { get; set; }
 
         public bool IsSubscribing { get; set; }
 

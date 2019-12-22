@@ -11,3 +11,4 @@ C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryRead
 C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryWelcomeForm.resources
 C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryFavoriteAuthorsForm.resources
 C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryAddNewBookForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryCreateUserForm.resources

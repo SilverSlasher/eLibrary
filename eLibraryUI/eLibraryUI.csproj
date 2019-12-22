@@ -58,6 +58,12 @@
     <Compile Include="LibraryAddNewBookForm.Designer.cs">
       <DependentUpon>LibraryAddNewBookForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibraryCreateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibraryCreateUserForm.Designer.cs">
+      <DependentUpon>LibraryCreateUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibraryFavoriteAuthorsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LibraryAddNewBookForm.resx">
       <DependentUpon>LibraryAddNewBookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibraryCreateUserForm.resx">
+      <DependentUpon>LibraryCreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LibraryFavoriteAuthorsForm.resx">
       <DependentUpon>LibraryFavoriteAuthorsForm.cs</DependentUpon>
@@ -114,6 +123,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eLibraryClasses\eLibraryClasses.csproj">
+      <Project>{46a6f076-70cb-424e-a0a6-e8508bb2b3da}</Project>
+      <Name>eLibraryClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
