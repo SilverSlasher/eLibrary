@@ -1,0 +1,8 @@
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\bin\Debug\netstandard2.0\eLibraryClasses.deps.json
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\bin\Debug\netstandard2.0\eLibraryClasses.dll
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\bin\Debug\netstandard2.0\eLibraryClasses.pdb
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Debug\netstandard2.0\eLibraryClasses.csprojAssemblyReference.cache
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Debug\netstandard2.0\eLibraryClasses.AssemblyInfoInputs.cache
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Debug\netstandard2.0\eLibraryClasses.AssemblyInfo.cs
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Debug\netstandard2.0\eLibraryClasses.dll
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Debug\netstandard2.0\eLibraryClasses.pdb

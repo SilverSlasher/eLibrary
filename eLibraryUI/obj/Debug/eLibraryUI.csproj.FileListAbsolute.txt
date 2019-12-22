@@ -1,0 +1,13 @@
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\bin\Debug\eLibraryUI.exe.config
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\bin\Debug\eLibraryUI.exe
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\bin\Debug\eLibraryUI.pdb
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.csprojAssemblyReference.cache
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryAccessForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.Properties.Resources.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.csproj.GenerateResource.cache
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.exe
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.pdb
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryReadBooksForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryWelcomeForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryFavoriteAuthorsForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.LibraryAddNewBookForm.resources
