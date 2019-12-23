@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace eLibraryClasses.Models
@@ -14,8 +15,31 @@ namespace eLibraryClasses.Models
 
         public string Genre { get; set; }
 
-        public int Pages { get; set; }  
+        public int Pages { get; set; }
 
+        public string Description { get; set; }
 
+        public BookModel()
+        {
+
+        }
+
+        public BookModel(string author, string title, string genre, string pages,string description)
+        {
+            Author = author;
+
+            Title = title;
+
+            Genre = genre;
+
+            int pagesValue = 0;
+
+            int.TryParse(pages, out pagesValue);
+
+            Pages = pagesValue;
+
+            Description = description;
+
+        }
     }
 }

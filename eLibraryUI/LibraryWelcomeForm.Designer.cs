@@ -70,6 +70,7 @@
             this.readBooksButton.TabIndex = 6;
             this.readBooksButton.Text = "Przeczytane";
             this.readBooksButton.UseVisualStyleBackColor = false;
+            this.readBooksButton.Click += new System.EventHandler(this.readBooksButton_Click);
             // 
             // chooseBookButton
             // 
@@ -82,6 +83,7 @@
             this.chooseBookButton.TabIndex = 7;
             this.chooseBookButton.Text = "Wybierz książkę";
             this.chooseBookButton.UseVisualStyleBackColor = false;
+            this.chooseBookButton.Click += new System.EventHandler(this.chooseBookButton_Click);
             // 
             // addNewBookButton
             // 
@@ -94,6 +96,7 @@
             this.addNewBookButton.TabIndex = 8;
             this.addNewBookButton.Text = "Dodaj książkę";
             this.addNewBookButton.UseVisualStyleBackColor = false;
+            this.addNewBookButton.Click += new System.EventHandler(this.addNewBookButton_Click);
             // 
             // statisticsButton
             // 
@@ -116,8 +119,9 @@
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(169, 48);
             this.logoutButton.TabIndex = 10;
-            this.logoutButton.Text = "Wyloguj";
+            this.logoutButton.Text = "Wyłącz";
             this.logoutButton.UseVisualStyleBackColor = false;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // LibraryWelcomeForm
             // 

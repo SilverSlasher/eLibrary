@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TrackerLibrary;
+using eLibraryClasses;
 
 namespace eLibraryUI
 {
@@ -18,9 +18,9 @@ namespace eLibraryUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            TrackerLibrary.GlobalConfig.InitializeConnections();
+            eLibraryClasses.GlobalConfig.InitializeConnections();
 
-            Application.Run(new LibraryAddNewBookForm());
+            Application.Run(new LibraryAccessForm());
         }
     }
 }

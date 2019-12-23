@@ -38,7 +38,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.passwordValue = new System.Windows.Forms.TextBox();
             this.createAccountLink = new System.Windows.Forms.LinkLabel();
-            this.passwordReminderLink = new System.Windows.Forms.LinkLabel();
+            this.reminderAccountLink = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -76,6 +76,7 @@
             this.userNameValue.TabIndex = 2;
             this.userNameValue.Text = "Nazwa użytkownika";
             this.userNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userNameValue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.userNameValue_MouseClick);
             // 
             // pictureBox3
             // 
@@ -97,6 +98,7 @@
             this.loginButton.TabIndex = 5;
             this.loginButton.Text = "Zaloguj";
             this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // panel1
             // 
@@ -127,6 +129,7 @@
             this.passwordValue.Text = "Hasło";
             this.passwordValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.passwordValue.UseSystemPasswordChar = true;
+            this.passwordValue.MouseClick += new System.Windows.Forms.MouseEventHandler(this.passwordValue_MouseClick);
             // 
             // createAccountLink
             // 
@@ -140,19 +143,21 @@
             this.createAccountLink.TabStop = true;
             this.createAccountLink.Text = "Utwórz konto";
             this.createAccountLink.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(185)))), ((int)(((byte)(22)))));
+            this.createAccountLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.createAccountLink_LinkClicked);
             // 
-            // passwordReminderLink
+            // reminderAccountLink
             // 
-            this.passwordReminderLink.AutoSize = true;
-            this.passwordReminderLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.passwordReminderLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(185)))), ((int)(((byte)(22)))));
-            this.passwordReminderLink.Location = new System.Drawing.Point(7, 605);
-            this.passwordReminderLink.Name = "passwordReminderLink";
-            this.passwordReminderLink.Size = new System.Drawing.Size(176, 25);
-            this.passwordReminderLink.TabIndex = 9;
-            this.passwordReminderLink.TabStop = true;
-            this.passwordReminderLink.Text = "Przypomnij hasło";
-            this.passwordReminderLink.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(185)))), ((int)(((byte)(22)))));
+            this.reminderAccountLink.AutoSize = true;
+            this.reminderAccountLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.reminderAccountLink.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(185)))), ((int)(((byte)(22)))));
+            this.reminderAccountLink.Location = new System.Drawing.Point(7, 605);
+            this.reminderAccountLink.Name = "reminderAccountLink";
+            this.reminderAccountLink.Size = new System.Drawing.Size(176, 25);
+            this.reminderAccountLink.TabIndex = 9;
+            this.reminderAccountLink.TabStop = true;
+            this.reminderAccountLink.Text = "Przypomnij hasło";
+            this.reminderAccountLink.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(185)))), ((int)(((byte)(22)))));
+            this.reminderAccountLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.reminderAccountLink_LinkClicked);
             // 
             // LibraryAccessForm
             // 
@@ -160,7 +165,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(30)))), ((int)(((byte)(123)))));
             this.ClientSize = new System.Drawing.Size(400, 700);
-            this.Controls.Add(this.passwordReminderLink);
+            this.Controls.Add(this.reminderAccountLink);
             this.Controls.Add(this.createAccountLink);
             this.Controls.Add(this.passwordValue);
             this.Controls.Add(this.panel2);
@@ -195,7 +200,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox passwordValue;
         private System.Windows.Forms.LinkLabel createAccountLink;
-        private System.Windows.Forms.LinkLabel passwordReminderLink;
+        private System.Windows.Forms.LinkLabel reminderAccountLink;
     }
 }
 
