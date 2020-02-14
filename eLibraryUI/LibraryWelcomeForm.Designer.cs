@@ -109,6 +109,7 @@
             this.statisticsButton.TabIndex = 9;
             this.statisticsButton.Text = "Statystyki";
             this.statisticsButton.UseVisualStyleBackColor = false;
+            this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
             // 
             // logoutButton
             // 

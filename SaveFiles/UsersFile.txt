@@ -1,0 +1,5 @@
+3^Dawid^Kutasiewicz^Kutas^kutas123^d.martenczuk@icloud.com^^^ False^^0
+2^Krzysiek^krani^krani^krani^krzysanisk@op.pl^^^ False^^13
+4^Józek^Ćwikła^Juhuu^asdf^asdfg@wp.px^^^ False^^0
+5^Józek^Ćwikła^Juhuu1^asdf^asf@wx.xp^^^ False^^0
+1^Krzysztof^Aniśkiewicz^SecretPL^haslo^krzysanisk@op.pl^1^^ True^^16

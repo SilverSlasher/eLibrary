@@ -1,0 +1,16 @@
+1^Tolkien^Hobbit, czyli tam i spowrotem^fantastyka^320^Opisxs
+2^Tolkien^Wladca pierscieni^fantastyka^255^Duzy opis
+3^Sapkowski^Chrzest ognia^fantastyka^123^maly opis
+4^Sapkowski^Czas pogardy^fantastyka^355^Opisik
+5^Bowden^Tajemna krucjata^historyczna^126^bardzo szeroki opis
+6^Szekspir^Chujumuju^horror^312^Nie wiem sam
+7^Szymborska^Pieśni poranne^inna^251^Piękne opisy przyrody
+8^Sapkowski^O wiedzminie^fantastyka^125^Dużo informacji
+9^Tolkien^O gwiazdach^fantastyka^125^Werrr
+10^Sapkowski^Lambert^fantastyka^533^Ty xxxx
+11^Sapkowski^Telefony^fantastyka^1236^O xiaomi
+12^Sapkowski^Pieniadze^fantastyka^234^Kasiora
+13^Nie znaju^Test^fantastyka^1234^Sdwqe
+14^Mosiek^Ucieczka z Mośkolandii^przygodowa^500^Mosiek porzucił swoje rodzinne strony i wyruszył na przygodę życia!
+15^To tamto^Starszy^kryminał^250^Straszny kryminał
+16^Jelenie^Jaja^przygodowa^255^Kolejny test książki

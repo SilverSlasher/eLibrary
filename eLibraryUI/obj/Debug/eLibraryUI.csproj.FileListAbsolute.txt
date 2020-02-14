@@ -24,3 +24,9 @@ C:\Users\krzys\source\repos\eLibrary\eLibraryUI\bin\Debug\System.Security.Access
 C:\Users\krzys\source\repos\eLibrary\eLibraryUI\bin\Debug\System.Security.Permissions.xml
 C:\Users\krzys\source\repos\eLibrary\eLibraryUI\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.RemindAccountForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.ChooseBookForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.SearchBookForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.ToReadForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.RandomBookForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.QuizForm.resources
+C:\Users\krzys\source\repos\eLibrary\eLibraryUI\obj\Debug\eLibraryUI.StatisticsForm.resources

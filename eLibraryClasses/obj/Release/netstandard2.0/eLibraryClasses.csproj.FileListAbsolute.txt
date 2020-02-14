@@ -5,3 +5,4 @@ C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Release\netstandard2.0\
 C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Release\netstandard2.0\eLibraryClasses.AssemblyInfo.cs
 C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Release\netstandard2.0\eLibraryClasses.dll
 C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Release\netstandard2.0\eLibraryClasses.pdb
+C:\Users\krzys\source\repos\eLibrary\eLibraryClasses\obj\Release\netstandard2.0\eLibraryClasses.csprojAssemblyReference.cache
