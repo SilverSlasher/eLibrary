@@ -1,16 +1,23 @@
-1^Tolkien^Hobbit, czyli tam i spowrotem^fantastyka^320^Opisxs
-2^Tolkien^Wladca pierscieni^fantastyka^255^Duzy opis
-3^Sapkowski^Chrzest ognia^fantastyka^123^maly opis
-4^Sapkowski^Czas pogardy^fantastyka^355^Opisik
-5^Bowden^Tajemna krucjata^historyczna^126^bardzo szeroki opis
-6^Szekspir^Chujumuju^horror^312^Nie wiem sam
-7^Szymborska^Pieśni poranne^inna^251^Piękne opisy przyrody
-8^Sapkowski^O wiedzminie^fantastyka^125^Dużo informacji
-9^Tolkien^O gwiazdach^fantastyka^125^Werrr
-10^Sapkowski^Lambert^fantastyka^533^Ty xxxx
-11^Sapkowski^Telefony^fantastyka^1236^O xiaomi
-12^Sapkowski^Pieniadze^fantastyka^234^Kasiora
-13^Nie znaju^Test^fantastyka^1234^Sdwqe
-14^Mosiek^Ucieczka z Mośkolandii^przygodowa^500^Mosiek porzucił swoje rodzinne strony i wyruszył na przygodę życia!
-15^To tamto^Starszy^kryminał^250^Straszny kryminał
-16^Jelenie^Jaja^przygodowa^255^Kolejny test książki
+1^Sapkowski^Żmija^fantastyka^250^Afganistan - tutaj od wieków ścierały się krwawo armie kolejnych władców dążących do władzy nad światem. Tu walczyli i ginęli najeźdźcy z Macedonii, Wielkiej Brytanii i Rosji.
+2^Corey James^Wzlot Persepolis^fantastyka^85^W olbrzymiej przestrzeni między Ziemią a Jowiszem planety wewnętrzne i Pas zawiązały ostrożny i niepewny sojusz, wciąż nawiedzany przez upiory historii i uprzedzeń
+3^Wells H.G.^Wehikuł czasu^fantastyka^132^Wellsowe rozważania o społeczeństwie przyszłości ocierają się mocno o antyutopię i teoretycznie odzwierciedlają obawy społeczne z końca XIX wieku, ale chwilami są przerażająco trafne
+4^Poore M.^Dziesięć tysięcy żyć^fantastyka^512^Dziesięć tysięcy szans, dokładnie rzecz biorąc. Dziesięć tysięcy żywotów, żeby „zrobić to, jak należy”. Odpowiedzieć na wszystkie wielkie pytania. Osiągnąć pełnię mądrości. I stać się Jednym ze Wszystkim. 
+5^King Stephen^Instytut^fantastyka^672^Luke Ellis budzi się w pokoju do złudzenia przypominającym jego własny, tyle że bez okien. Wkrótce orientuje się, że trafił do tajemniczego Instytutu i nie jest jedynym dzieciakiem, którego tu uwięziono
+6^Wolfe G.^Cień i pazur^fantastyka^592^Severian przygotowywał się do fachu kata, lecz zakochał się w uwięzionej kobiecie i złamał dla niej obowiązujące katów zasady. 
+7^Riggs R.^Osobliwy dom pani Peregrine^horror^400^Wywołująca dreszcz emocji i grozy opowieść o domu sierot na tajemniczej wyspie, zamieszkiwanym niegdyś przez równie tajemnicze dzieci. Szesnastoletni Jakub, którego dziadek był jednym z nich, przyjeżdża na wyspę, żeby za wszelką cenę odkryć przeszłość dziwnego, zniszczonego domu i jego małych mieszkańców. 
+8^Brisou-Pellen E.^Liam i mapa wieczności^horror^92^Po długiej chorobie piętnastoletni Liam zostaje wysłany do sanatorium na odludziu. Tam odkrywa, że miejsce to jest więcej niż dziwne - tajne pomieszczenia, dziwni lokatorzy, podejrzane hałasy dobywające się z piwnic.
+9^Duncan Lois^Korytarzem w mrok^horror^199^Blackwood to nietypowa szkoła – mroczne korytarze, kręte schody, pokoje pełne antyków. Kit od pierwszej chwili w nowym miejscu czuje niepokój. Wkrótce zaczyna mieć dziwne sny, a jej listy do bliskich pozostają bez odpowiedzi. 
+10^Ohlsson K.^Szklane dzieci^horror^224^Nastoletnia Billie nie wierzy w duchy. Ale z jej domem naprawdę jest coś nie tak! Czasem słychać dziwne odgłosy, stukanie w okno, a lampa w salonie buja się tam i z powrotem bez żadnego powodu… Billie, szukając wraz z przyjaciółmi poprzednich lokatorów domu, wpada na trop niewiarygodnych wydarzeń sprzed lat.
+11^Cameron B.^Był sobie pies^przygodowa^392^Poruszająca opowieść o zaufaniu i miłości z merdającym ogonem w tle.Bailey to uroczy kundel, który po serii niefortunnych zdarzeń odchodzi z tego świata. Ku swemu zdziwieniu odradza się ponownie jako złotowłosy szczeniaczek i trafia w ręce ośmioletniego Ethana. 
+12^Szklarska K.^Przekleństwo złota^przygodowa^220^Jest to historia młodego wojownika z plemienia Dakotów, który szuka zemsty za śmierć swego ojca, zabitego w walce z wrogim plemieniem Czipewejów. 
+13^Niziurski E.^Klub Włóczykijów^przygodowa^182^Kornel Kiwajłło, jego stryj Dionizy i grupa przyjaciół wyruszają na wakacyjną wyprawę w poszukiwaniu legendarnego skarbu dziadka Hieronima. 
+14^Fiedler A.^Mały bizon^przygodowa^85^Jedna z najbardziej znanych książek autorstwa Arkadego Fiedlera. Klasyka polskiej literatury indianistycznej.
+15^Mróz R.^Rewizja^kryminał^628^Żona i córka robotnika z Ursynowa giną tragicznie w niewyjaśnionych okolicznościach. Ich polisa na życie jest tak duża, że towarzystwo ubezpieczeniowe nie spieszy się z jej wypłaceniem. Pogrążony w żałobie mężczyzna spodziewa się problemów, ale to, co go spotyka, przechodzi jego najśmielsze obawy...
+16^Starzewski A.^Męty^kryminał^188^"Męty" to zbiór opowiadań kryminalnych, w których autor-narrator przybliża autentyczne historie związane ze środowiskiem przestępczym, z którym miał do czynienia podczas swojej pracy. 
+17^Pruś A.^Lalki^kryminał^258^Wielbiciele kryminału znajdą tu kilka trupów, żywą akcję i tajemnice, które spróbuje odkryć czwórka detektywów – rozważna dama oraz trzech lekkoduchów.
+18^Gluhovsky D.^Koniec drogi^kryminał^64^Nigdy niepublikowane w Polsce nowe opowiadanie autora kultowej trylogii Metro 2033 2034 2035
+19^Łapiński A.^Plaże inwazji w Normandii^historyczna^592^6 czerwca 1944 Normandia stała się areną walk na niespotykaną dotąd skalę, które rozstrzygnęły losy i przyszłość Europy. Aliancki desant to przedsięwzięcie imponujące. Również teraz, dziesięciolecia po inwazji armii sprzymierzonych, pamięć o tamtych dniach warta jest przypomnienia i utrwalenia
+20^Kruczyński A.^72 godziny^historyczna^300^Zdobycie terminala przeładunkowego ropy naftowej KAAOT przy granicy z Iranem, opanowanie tamy Mukarayin na północ od Bagdadu i kilkudniowe działania w porcie Umm Kasr to najbardziej spektakularne akcje polskich jednostek po II wojnie światowej. Wojskowa Formacja Specjalna GROM wraz z amerykańskimi Navy SEALs dokonała niemożliwego: w kilkanaście dni żołnierze zdobyli najbardziej strategiczny punkt na mapie Iraku.
+21^Dudek T.^Przebraże 1943^historyczna^195^Kreśląc dzieje samoobrony, autor starał się również ukazać skomplikowaną sytuację panującą w tym okresie na Wołyniu. Miała ona ogromny wpływ na postępowanie załogi Przebraża. Dowództwo bazy musiało bowiem ostrożnie lawirować pomiędzy okupującymi te ziemie Niemcami a rosnącymi w siłę oddziałami partyzantki radzieckiej. 
+22^Nałkowska Z.^Medaliony^historyczna^64^Utwory oparte są na autentycznych przeżyciach ludzi, którzy przeszli wojenny koszmar. Wstrząsające relacje nieopatrzone komentarzem odautorskim składają się na dokument oskarżający ludobójstwo.
+23^Herling-Grudziński G.^Inny świat^historyczna^356^Jedno z najważniejszych świadectw więźnia łagru i zarazem jeden z najistotniejszych utworów w historii polskiej – i światowej – literatury XX wieku.

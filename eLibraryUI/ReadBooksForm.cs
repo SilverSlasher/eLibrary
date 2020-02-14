@@ -96,5 +96,10 @@ namespace eLibraryUI
             quotes = quotes.OrderBy(o => Guid.NewGuid()).ToList();
             quotationLabel.Text = quotes[0];
         }
+
+        private void bookDescriptionLabel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(bookDescriptionLabel.Text);
+        }
     }
 }

@@ -100,6 +100,7 @@
             // 
             // bookDescriptionLabel
             // 
+            this.bookDescriptionLabel.AutoEllipsis = true;
             this.bookDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.bookDescriptionLabel.ForeColor = System.Drawing.Color.Black;
             this.bookDescriptionLabel.Location = new System.Drawing.Point(4, 195);
@@ -107,6 +108,7 @@
             this.bookDescriptionLabel.Size = new System.Drawing.Size(342, 126);
             this.bookDescriptionLabel.TabIndex = 7;
             this.bookDescriptionLabel.Text = "Nie znaleziono opisu";
+            this.bookDescriptionLabel.Click += new System.EventHandler(this.bookDescriptionLabel_Click);
             // 
             // genreLabel
             // 

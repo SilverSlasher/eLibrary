@@ -225,5 +225,10 @@ namespace eLibraryUI
 
             return output;
         }
+
+        private void bookDescriptionLabel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(bookDescriptionLabel.Text);
+        }
     }
 }
