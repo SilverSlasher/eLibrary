@@ -28,7 +28,7 @@ namespace eLibraryClasses.DataAccess
             //if file exists, load it and convert to list
             return File.ReadAllLines(file).ToList();
         }
-        //Converting usermodels and saving users to file .txt
+        //Converting user models and saving users to file .txt
         public static void SaveToUsersFile(this List<UserModel> users)
         {
             List<string> lines = new List<string>();
@@ -75,7 +75,7 @@ namespace eLibraryClasses.DataAccess
 
             return users;
         }
-        //Convert bookmodels and saving them to file .txt
+        //Convert book models and saving them to file .txt
         public static void SaveToBooksFile(this List<BookModel> books)
         {
             List<string> lines = new List<string>();
@@ -178,7 +178,7 @@ namespace eLibraryClasses.DataAccess
                 //Check if there are any of readbooks by user
                 if (cols[6] != "")
                 {
-                    //Get array of read book Id's get from file. Each Id is seperated by |
+                    //Get array of read book Id's get from file. Each Id is separated by |
                     string[] bookIds = cols[6].Split('|');
 
                     //Check if List<ReadBooks> is created
@@ -192,14 +192,14 @@ namespace eLibraryClasses.DataAccess
                     foreach (string id in bookIds)
                     {
                         //Look for the first (and only) book with matched Id and add it to user model
-                        user.ReadBooks.Add(books.Where(x => x.Id == int.Parse(id)).First());
+                        user.ReadBooks.Add(books.First(x => x.Id == int.Parse(id)));
                     }
                 }
 
                 //Check if there are any of favorite authors of user
                 if (cols[7] != "")
                 {
-                    //Get array of favorite authors names get from file. Each name is seperated by |
+                    //Get array of favorite authors names get from file. Each name is separated by |
                     string[] authors = cols[7].Split('|');
 
                     //Check if List<FavoriteAuthors> is created
@@ -236,7 +236,7 @@ namespace eLibraryClasses.DataAccess
                     foreach (string id in bookIds)
                     {
                         //Look for the first (and only) book with matched Id and add it to user model
-                        user.ToReadBooks.Add(books.Where(x => x.Id == int.Parse(id)).First());
+                        user.ToReadBooks.Add(books.First(x => x.Id == int.Parse(id)));
                     }
                 }
 
@@ -302,7 +302,7 @@ namespace eLibraryClasses.DataAccess
             //Read each line from file, and assign cols to book params
             foreach (string line in lines)
             {
-                //Params are write down to file separated by ^, so reading is reverse operation. There are no option of adding new questions by app, but logic is same.
+                //Params are write down to file separated by ^, so reading is reverse operation. There are no option of adding new Questions by app, but logic is same.
                 string[] cols = line.Split('^');
 
                 //Create new question in application

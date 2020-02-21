@@ -32,7 +32,7 @@
             this.searchTypeLabel = new System.Windows.Forms.Label();
             this.searchTypeDropDown = new System.Windows.Forms.ComboBox();
             this.searchValueLabel = new System.Windows.Forms.Label();
-            this.titleValue = new System.Windows.Forms.TextBox();
+            this.searchValue = new System.Windows.Forms.TextBox();
             this.foundBooksListBox = new System.Windows.Forms.ListBox();
             this.bookDescriptionPanel = new System.Windows.Forms.Panel();
             this.bookDescriptionLabel = new System.Windows.Forms.Label();
@@ -93,13 +93,13 @@
             this.searchValueLabel.TabIndex = 22;
             this.searchValueLabel.Text = "Szukana fraza";
             // 
-            // titleValue
+            // searchValue
             // 
-            this.titleValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.titleValue.Location = new System.Drawing.Point(12, 129);
-            this.titleValue.Name = "titleValue";
-            this.titleValue.Size = new System.Drawing.Size(376, 38);
-            this.titleValue.TabIndex = 23;
+            this.searchValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.searchValue.Location = new System.Drawing.Point(12, 129);
+            this.searchValue.Name = "searchValue";
+            this.searchValue.Size = new System.Drawing.Size(376, 38);
+            this.searchValue.TabIndex = 23;
             // 
             // foundBooksListBox
             // 
@@ -255,7 +255,7 @@
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.bookDescriptionPanel);
             this.Controls.Add(this.foundBooksListBox);
-            this.Controls.Add(this.titleValue);
+            this.Controls.Add(this.searchValue);
             this.Controls.Add(this.searchValueLabel);
             this.Controls.Add(this.searchTypeDropDown);
             this.Controls.Add(this.searchTypeLabel);
@@ -277,7 +277,7 @@
         private System.Windows.Forms.Label searchTypeLabel;
         private System.Windows.Forms.ComboBox searchTypeDropDown;
         private System.Windows.Forms.Label searchValueLabel;
-        private System.Windows.Forms.TextBox titleValue;
+        private System.Windows.Forms.TextBox searchValue;
         private System.Windows.Forms.ListBox foundBooksListBox;
         private System.Windows.Forms.Panel bookDescriptionPanel;
         private System.Windows.Forms.Label bookDescriptionLabel;

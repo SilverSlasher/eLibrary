@@ -4073,11 +4073,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\krzys\\source\\repos\\eLibrary\\eLibraryClasses\\eLibraryClasses.csproj",
+      "projectUniqueName": "C:\\Users\\krzys\\Source\\Repos\\eLibrary2\\eLibraryClasses\\eLibraryClasses.csproj",
       "projectName": "eLibraryClasses",
-      "projectPath": "C:\\Users\\krzys\\source\\repos\\eLibrary\\eLibraryClasses\\eLibraryClasses.csproj",
+      "projectPath": "C:\\Users\\krzys\\Source\\Repos\\eLibrary2\\eLibraryClasses\\eLibraryClasses.csproj",
       "packagesPath": "C:\\Users\\krzys\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\krzys\\source\\repos\\eLibrary\\eLibraryClasses\\obj\\",
+      "outputPath": "C:\\Users\\krzys\\Source\\Repos\\eLibrary2\\eLibraryClasses\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -4138,7 +4138,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

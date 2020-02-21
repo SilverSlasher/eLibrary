@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eLibraryClasses
 {
-    public static class EmailConfig
+    public static class EmailService
     {
         //Sending welcome email after creating a new user
         public static void SendWelcomeEmail(string to, string name)

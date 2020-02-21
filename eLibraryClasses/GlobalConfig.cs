@@ -17,7 +17,7 @@ namespace eLibraryClasses
         public const string BooksFile = "BooksFile.txt";
         //Name of the file with saved quotes
         public const string QuotesFile = "QuotesFile.txt";
-        //Name of the file with saved quiz questions and answers
+        //Name of the file with saved quiz Questions and answers
         public const string QuizFile = "QuizFile.txt";
 
 
