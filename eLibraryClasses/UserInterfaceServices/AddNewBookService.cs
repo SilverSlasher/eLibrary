@@ -10,7 +10,6 @@ namespace eLibraryClasses.UserInterfaceServices
     public class AddNewBookService
     {
 
-        //Validating every possible mistake of user
         public void ValidateForm(string authorName, string title, string pages)
         {
             bool pagesValidNumber = int.TryParse(pages, out int pagesValue);
@@ -31,7 +30,7 @@ namespace eLibraryClasses.UserInterfaceServices
             List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
             //Add to user model and info about highest Id of book in file (add info about added book in this form)
             loggedUser.LastLoggedInfo = allBooks.OrderByDescending(x => x.Id).First().Id;
-            //Update user info to userfile .txt
+
             FileConnectorCore.UpdateDataOfLoggedUser(loggedUser).SaveToUsersFile();
         }
 
@@ -47,6 +46,7 @@ namespace eLibraryClasses.UserInterfaceServices
 
             //Fill book model with Id and save it to file
             GlobalConfig.Connection.CreateBook(book);
+
             //Add book to user info, to prevent getting message about new book in next login (User add the book, so he knows about existing)
             UpdateUserLastLoggedInfo(loggedUser);
         }

@@ -29,11 +29,7 @@ namespace eLibraryUI
 
         //Every anwser has 2 items. First is text of answer so AnswerText is 0, and variable is more understandable
         private const int AnswerText = 0;
-
-        //Variable helps to save data of visible of button use to go to next question
         private bool isNextQuestionButtonVisible;
-
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
 
@@ -43,7 +39,6 @@ namespace eLibraryUI
             InitializeComponent();
             loggedUser = model;
             service.CurrentStepIndex = 0;
-            //Initialize first question of quiz
             InitializeQuestion();
         }
 
@@ -61,7 +56,6 @@ namespace eLibraryUI
             this.Close();
         }
 
-        //Changing text of label in form to text of Questions got from text file
         private void InitializeQuestion()
         {
             //Change text of question label to text of the question got from text file. Number of question is same as current step of form
@@ -77,7 +71,6 @@ namespace eLibraryUI
             isNextQuestionButtonVisible = false;
         }
 
-        //Check if any of radiobutton are clicked by user
         private bool AnyRadioButtonClicked()
         {
             bool output = firstAnswerButton.Checked || secondAnswerButton.Checked || thirdAnswerButton.Checked || fourthAnswerButton.Checked;
@@ -96,7 +89,6 @@ namespace eLibraryUI
             }
         }
 
-        //Check which button is clicked and return its number
         private int GetSelectedRadioButton()
         {
             if (firstAnswerButton.Checked)
@@ -138,7 +130,7 @@ namespace eLibraryUI
                     //Next question will be shown so hide "Next question" button, so user has to choose next option
                     HideNextQuestionButton();
                     firstAnswerButton.Checked = false;
-                    //Initialize next question
+
                     InitializeQuestion();
                     break;
 
@@ -179,7 +171,6 @@ namespace eLibraryUI
             nextQuestionButton.Visible = false;
         }
 
-        //Check if all info is got. If yes, show the best matched book
         private void MatchBook()
         {
             //If current index is 3 (max one), show finish panel of this form
@@ -191,7 +182,6 @@ namespace eLibraryUI
             }
         }
 
-        //Write down author name, title and genre of best matched book (took randomly from all matched books)
         private void WriteDownMatchedBook()
         {
             authorLabel.Text = service.MatchedBooks[0].Author;

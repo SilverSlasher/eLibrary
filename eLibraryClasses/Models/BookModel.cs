@@ -7,17 +7,11 @@ namespace eLibraryClasses.Models
 {
     public class BookModel
     {
-        //Unique Id of the book
         public int Id { get; set; }
-        //Author name of the book
         public string Author { get; set; }
-        //Title of the book
         public string Title { get; set; }
-        //Genre of the book
         public string Genre { get; set; }
-        //Number of pages of the book
         public int Pages { get; set; }
-        //Description of the book
         public string Description { get; set; }
 
         public BookModel()

@@ -17,8 +17,6 @@ namespace eLibraryUI
     public partial class SearchBookForm : Form
     {
         SearchBookService service = new SearchBookService();
-
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
         public SearchBookForm(UserModel model)

@@ -17,8 +17,6 @@ namespace eLibraryUI
     public partial class StatisticsForm : Form
     {
         StatisticsService service = new StatisticsService();
-
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
         public StatisticsForm(UserModel model)

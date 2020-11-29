@@ -18,7 +18,6 @@ namespace eLibraryUI
     {
         private LibraryWelcomeService service = new LibraryWelcomeService();
 
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
 
@@ -55,7 +54,6 @@ namespace eLibraryUI
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            //Show a message box to confirm willingness of exit
             DialogResult decision = MessageBox.Show("Czy na pewno chcesz wyłączyć?", "Uwaga", MessageBoxButtons.YesNo);
 
             if (decision == DialogResult.Yes)

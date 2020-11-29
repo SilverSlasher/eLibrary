@@ -6,9 +6,7 @@ namespace eLibraryClasses.Models
 {
     public class QuestionModel
     {
-        //Unique Id of the book
         public int Id { get; set; }
-        //Text of the question
         public string Inquiry { get; set; }
         //Object for the first answer. [0] is text of first answer. [1] is additional info (genre or number of pages)
         public List<string> FirstAnswer { get; set; }

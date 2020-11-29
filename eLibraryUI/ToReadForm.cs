@@ -16,15 +16,12 @@ namespace eLibraryUI
     public partial class ToReadForm : Form
     {
         ToReadService service = new ToReadService();
-
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
         public ToReadForm(UserModel model)
         {
             InitializeComponent();
             loggedUser = model;
-            //Fill listbox of read books with user data
             WireUpToReadList();
         }
 
@@ -43,7 +40,6 @@ namespace eLibraryUI
             toReadListBox.DisplayMember = "Title";
         }
 
-        //Refresh description panel with detail of highlight book
         private void UpdateBookDescriptionPanel()
         {
             BookModel descriptionPanelBook = (BookModel)toReadListBox.SelectedItem;

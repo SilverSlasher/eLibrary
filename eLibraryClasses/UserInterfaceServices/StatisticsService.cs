@@ -8,7 +8,6 @@ namespace eLibraryClasses.UserInterfaceServices
 {
     public class StatisticsService
     {
-        //Check if book lists of user are created. If not, create a new ones
         public void PreventNullError(ref UserModel loggedUser)
         {
             if (loggedUser.ReadBooks == null)
@@ -60,25 +59,20 @@ namespace eLibraryClasses.UserInterfaceServices
 
         public string GetFavoriteGenre(UserModel loggedUser)
         {
-            //Create a new temporary list of all books read or to read by user
             List<BookModel> userAllBooks = new List<BookModel>();
 
-            //Add to temporary list every book which user read
             foreach (BookModel book in loggedUser.ReadBooks)
             {
                 userAllBooks.Add(book);
             }
 
-            //Add to temporary list every book which user selected "to read"
             foreach (BookModel book in loggedUser.ToReadBooks)
             {
                 userAllBooks.Add(book);
             }
 
-            //Create a new structure
             Genres genresCount = new Genres();
 
-            //Set all values to 0
             genresCount = SetStartingValuesOfGenres();
 
             //Count the number of repetitions of each book genre

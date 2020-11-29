@@ -25,7 +25,6 @@ namespace eLibraryUI
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            //Check the validating of every variable in form
             try
             {
                 service.ValidateForm(
@@ -43,7 +42,6 @@ namespace eLibraryUI
                 return;
             }
 
-            //Prepares new user model with data got from user, next fill it with ID and save it to file
             service.PrepareNewUser(firstNameValue.Text, lastNameValue.Text, userNameValue.Text, passwordValue.Text, emailValue.Text);
             this.Close();
             MessageBox.Show("Pomyślnie utworzono konto!");

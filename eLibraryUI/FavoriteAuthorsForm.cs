@@ -18,7 +18,6 @@ namespace eLibraryUI
     {
         private FavoriteAuthorsService service = new FavoriteAuthorsService();
 
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
 
@@ -35,11 +34,9 @@ namespace eLibraryUI
         private void WireUpAuthors()
         {
             favoriteAuthorsDropDown.DataSource = null;
-            //Assign to dropdown with favorite authors of user
             favoriteAuthorsDropDown.DataSource = loggedUser.FavoriteAuthors;
 
             addFavoriteAuthorDropDown.DataSource = null;
-            //Assign to dropdown with all existing authors
             addFavoriteAuthorDropDown.DataSource = service.AvailableAuthors();
         }
 
@@ -80,7 +77,6 @@ namespace eLibraryUI
 
         private void subscriptionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //Assign checkbox with user's property
             service.SettingUpSubscription(subscriptionCheckBox.Checked,loggedUser);
         }
 

@@ -13,7 +13,6 @@ namespace eLibraryUI
 {
     public partial class ChooseBookForm : Form
     {
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
         public ChooseBookForm(UserModel model)

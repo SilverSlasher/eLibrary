@@ -22,34 +22,25 @@ namespace eLibraryClasses.UserInterfaceServices
         //The attribute is the best-matching genre to answer (in first answers) or number of pages (in last answer)
         private const int AnswerAttribute = 1;
 
-        //Variable is changed, when matched books are matched by genre
         private bool areBooksMatchedByGenre = false;
 
-        //Variable is changed, when matched books are matched by pages
         private bool areBooksMatchedByPages = false;
 
-        //Get all question models from file .txt
         public List<QuestionModel> Questions = GlobalConfig.QuizFile.FullFilePath().LoadFile().ConvertToQuestionModels();
 
-        //Get all books from file .txt
         private List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
 
-        //Create a new list of matched books (books will be added during this form)
         public List<BookModel> MatchedBooks = new List<BookModel>();
 
-        //Variable to store info about step of the form
         public int CurrentStepIndex;
 
-        //Check if user already added the book to his own library
         private bool isAddedNow = false;
 
         //Taking attribute from chosen answer, and add books with right genre from all books, to matched books.
         private void RefreshMatchedBooksByGenre(int selectedOption)
         {
-            //If user chose first option (first radio button) and books are not matched before
             if (selectedOption == 1 && !areBooksMatchedByGenre)
             {
-                //Find all matching books in all books with genre took from answer attribute
                 foreach (BookModel book in allBooks)
                 {
                     if (Questions[CurrentStepIndex].FirstAnswer[AnswerAttribute] == book.Genre)
@@ -57,11 +48,10 @@ namespace eLibraryClasses.UserInterfaceServices
                         MatchedBooks.Add(book);
                     }
                 }
-                //Set flag of matching by genre
+
                 areBooksMatchedByGenre = true;
             }
 
-            //If user chose second option (second radio button) and books are not matched before
             if (selectedOption == 2 && !areBooksMatchedByGenre)
             {
                 foreach (BookModel book in allBooks)
@@ -72,11 +62,9 @@ namespace eLibraryClasses.UserInterfaceServices
                         MatchedBooks.Add(book);
                     }
                 }
-                //Set flag of matching by genre
                 areBooksMatchedByGenre = true;
             }
 
-            //If user chose third option (third radio button) and books are not matched before
             if (selectedOption == 3 && !areBooksMatchedByGenre)
             {
                 //It's the specific one. Answers are known before, and the third one is correct to both genres, so both have to be added
@@ -88,11 +76,10 @@ namespace eLibraryClasses.UserInterfaceServices
                         MatchedBooks.Add(book);
                     }
                 }
-                //Set flag of matching by genre
+
                 areBooksMatchedByGenre = true;
             }
 
-            //If user chose fourth option (fourth radio button) and books are not matched before
             if (selectedOption == 4 && !areBooksMatchedByGenre)
             {
                 //Answers are known before. The fourth one didn't specify any genres, so every book is correct
@@ -100,7 +87,7 @@ namespace eLibraryClasses.UserInterfaceServices
                 {
                     MatchedBooks.Add(book);
                 }
-                //Set flag of matching by genre
+
                 areBooksMatchedByGenre = true;
             }
 
@@ -162,7 +149,6 @@ namespace eLibraryClasses.UserInterfaceServices
                     }
                 }
 
-                //Set flag of matching by pages
                 areBooksMatchedByPages = true;
 
                 return booksToDelete;
@@ -248,28 +234,22 @@ namespace eLibraryClasses.UserInterfaceServices
         //I didn't disabled option of showing books, which user read before, because something it's nice to remind yourself about good one
         private bool VerifyBookExistingInUserBookshelf(ref UserModel loggedUser)
         {
-            //Create a new temporary list 
             List<BookModel> userUsedBooks = new List<BookModel>();
 
-            //Validate if lists of user are created
             PreventNullError(loggedUser);
 
-            //Add to temporary list every book which user read before
             foreach (BookModel book in loggedUser.ReadBooks)
             {
                 userUsedBooks.Add(book);
             }
 
-            //Add to temporary list every book which would like to read (saved it on "To read bookshelf") 
             foreach (BookModel book in loggedUser.ToReadBooks)
             {
                 userUsedBooks.Add(book);
             }
 
-            //Take best matched book
             BookModel singleBook = MatchedBooks[0];
 
-            //Compare best matched book with every book of user bookshelf
             foreach (BookModel book in userUsedBooks)
             {
                 if (singleBook.Id == book.Id)
@@ -297,7 +277,6 @@ namespace eLibraryClasses.UserInterfaceServices
             }
         }
 
-        //Check if is it possible to add matched book to "To read" bookshelf
         public void TryToAddBookToBookshelf(ref UserModel loggedUser)
         {
             //If user added book to bookshelf a moment before, give a warning
@@ -316,9 +295,9 @@ namespace eLibraryClasses.UserInterfaceServices
 
 
             loggedUser.ToReadBooks.Add(MatchedBooks.ElementAt(0));
-            //Save user data to file
+
             FileConnectorCore.UpdateDataOfLoggedUser(loggedUser).SaveToUsersFile();
-            //Set a flag, that user added the book to bookshelf already
+
             isAddedNow = true;
         }
 

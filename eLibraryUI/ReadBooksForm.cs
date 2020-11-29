@@ -17,8 +17,6 @@ namespace eLibraryUI
     public partial class ReadBooksForm : Form
     {
         private ReadBooksService service = new ReadBooksService();
-
-        //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
         
 
@@ -26,9 +24,7 @@ namespace eLibraryUI
         {
             InitializeComponent();
             loggedUser = model;
-            //Fill listbox of read books with user data
             WireUpList();
-            //Randomize order of list of quotes and change text of label to quote
             quotationLabel.Text = service.RandomizeAndReturnQuote();
         }
 
@@ -54,7 +50,6 @@ namespace eLibraryUI
             readBooksListBox.DisplayMember = "Title";
         }
 
-        //Refresh description panel with detail of highlight book
         private void UpdateBookDescriptionPanel()
         {
             BookModel descriptionPanelBook = (BookModel)readBooksListBox.SelectedItem;

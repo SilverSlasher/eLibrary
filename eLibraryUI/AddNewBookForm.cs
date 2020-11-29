@@ -36,17 +36,14 @@ namespace eLibraryUI
         {
             try
             {
-                //Check the validating of every variable in form
                 service.ValidateForm(authorValue.Text, titleValue.Text, pagesValue.Text);
             }
             catch (Exception exception)
             {
-                //If validating gone wrong, inform user about mistake
                 MessageBox.Show(exception.Message);
                 return;
             }
 
-            //Prepares new book model with data got from user, next fill it with ID and save it to file
             service.PrepareNewBook(
                 authorValue.Text,
                 titleValue.Text,

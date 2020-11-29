@@ -9,7 +9,6 @@ namespace eLibraryClasses.UserInterfaceServices
 {
     public class ToReadService
     {
-        //Try to add selected book from "to read bookshelf" to "read books bookshelf"
         public void AddBookToUserReadBookshelf(ref UserModel loggedUser, BookModel selectedItem)
         {
             //Check if book lists of user are created. If not, create a new ones
@@ -20,7 +19,6 @@ namespace eLibraryClasses.UserInterfaceServices
                 throw new Exception("Brak książek w grupie 'Do przeczytania'");
             }
 
-            //Check if selected book already exists in bookshelf, if yes throw new exception
             if (ValidateExisting(loggedUser.ReadBooks, selectedItem))
             {
                 throw new Exception("Książka znajduje się już w grupie 'Przeczytane'");
@@ -28,7 +26,7 @@ namespace eLibraryClasses.UserInterfaceServices
 
             loggedUser.ReadBooks.Add(selectedItem);
             loggedUser.ToReadBooks.Remove(selectedItem);
-            //Update user data, and save new data to file
+
             FileConnectorCore.UpdateDataOfLoggedUser(loggedUser).SaveToUsersFile();
         }
 

@@ -6,23 +6,14 @@ namespace eLibraryClasses.Models
 {
     public class UserModel
     {
-        //Unique Id of the book
         public int Id { get; set; }
-        //First name of the user
         public string FirstName { get; set; }
-        //Second name of the user
         public string LastName { get; set; }
-        //Username / login of the user
         public string UserName { get; set; }
-        //Password of the user
         public string Password { get; set; }
-        //Email address of the user
         public string EmailAddress { get; set; }
-        //List of books read by user
         public List<BookModel> ReadBooks { get; set; }
-        //List of books which user would like to read
         public List<BookModel> ToReadBooks { get; set; }
-        //List of favorite authors of user
         public List<string> FavoriteAuthors { get; set; }
         //If isSubscribing is "True", user will get notification after login if new books of his favorite authors was added to base
         public bool IsSubscribing { get; set; }

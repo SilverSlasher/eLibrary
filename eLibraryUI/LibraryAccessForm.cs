@@ -41,7 +41,6 @@ namespace eLibraryUI
         {
             try
             {
-                //Validate info got from user with data from file, and return user model if data is correct. Then create new form with right user model
                 LibraryWelcomeForm frm = new LibraryWelcomeForm(service.UserLoginIn(userNameValue.Text,passwordValue.Text));
                 frm.Show();
                 this.Hide();

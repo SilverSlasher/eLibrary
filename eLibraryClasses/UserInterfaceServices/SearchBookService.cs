@@ -27,7 +27,6 @@ namespace eLibraryClasses.UserInterfaceServices
 
         public List<BookModel> SearchForBooks(string type, string value)
         {
-            //Create a list of book models to return at the end of function
             List<BookModel> output = new List<BookModel>();
 
             List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
@@ -63,7 +62,6 @@ namespace eLibraryClasses.UserInterfaceServices
 
                     foreach (BookModel book in allBooks)
                     {
-                        //Check if any title contains searched value (Not exactly the same. "Har" will return "Harry Potter" etc)
                         if (book.Title.Contains(value))
                         {
                             output.Add(book);
@@ -77,7 +75,6 @@ namespace eLibraryClasses.UserInterfaceServices
 
                     foreach (BookModel book in allBooks)
                     {
-                        //Check if any genre contains searched value (Not exactly the same. "fan" will return "fantastyka" etc)
                         if (book.Genre.Contains(value))
                         {
                             output.Add(book);
@@ -90,7 +87,6 @@ namespace eLibraryClasses.UserInterfaceServices
             return output;
         }
 
-        //Check if book lists of user are created. If not, create a new ones
         private void PreventNullError(UserModel loggedUser)
         {
             if (loggedUser.ReadBooks == null)
@@ -108,7 +104,6 @@ namespace eLibraryClasses.UserInterfaceServices
         {
             PreventNullError(loggedUser);
             ExistingWarning(loggedUser, selectedItem);
-            //If book doesn't exist in user bookshelf, add the book, and update user info and save it to file
             loggedUser.ToReadBooks.Add(selectedItem);
             FileConnectorCore.UpdateDataOfLoggedUser(loggedUser).SaveToUsersFile();
         }

@@ -10,7 +10,6 @@ namespace eLibraryClasses.UserInterfaceServices
     {
         public void IsUsernameOrEmailCurrentlyExisting(string userName, string email)
         {
-            //Create a new list of user models, and fill it with all users got from file .txt
             List<UserModel> users = GlobalConfig.UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
 
             foreach (UserModel user in users)
@@ -41,13 +40,12 @@ namespace eLibraryClasses.UserInterfaceServices
 
             //Fill user model with Id and save it to file
             GlobalConfig.Connection.CreateUser(user);
-            //Send a welcome email to user on the email address provided before
+
             EmailService.SendWelcomeEmail(user.EmailAddress, user.FirstName);
-            //Send email to app creator, more info in readme.txt and EmailConfig.cs
+
             EmailService.SendEmailToAppCreator(user.FirstName, user.LastName);
         }
 
-        //Validating every possible mistake of user
         public void ValidateForm(
             string userName,
             string password,
@@ -57,7 +55,6 @@ namespace eLibraryClasses.UserInterfaceServices
             string email
             )
         {
-            //Checking if every necessary info is provided by user 
             bool lengthValidate = (userName.Length > 0 &&
                                    password.Length > 0 &&
                                    repeatPassword.Length > 0 &&
@@ -66,30 +63,25 @@ namespace eLibraryClasses.UserInterfaceServices
                                    email.Length > 0);
 
 
-            //Check if is there user with same username of email address
             IsUsernameOrEmailCurrentlyExisting(userName, email);
 
             if (!lengthValidate)
             {
-                //If every necessary info is not provided, inform user about mistake
                 throw new Exception("Nie wprowadzono wszystkich danych");
             }
 
             if (password != repeatPassword)
             {
-                //If passwords are not same, inform user about mistake
                 throw new Exception("Hasła muszą być identyczne");
             }
 
             if (!IsValidEmail(email))
             {
-                //If email is not correct, inform user about mistake
                 throw new Exception("Wprowadź poprawny adres email");
             }
 
         }
 
-        //Validating form of email address
         public bool IsValidEmail(string email)
         {
             //Try to send fake mail to email address provided by user
