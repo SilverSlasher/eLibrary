@@ -18,22 +18,23 @@ namespace eLibraryUI
 {
     public partial class LibraryAccessForm : Form
     {
-        private LibraryAccessService service = new LibraryAccessService();
+        private LibraryAccessService service;
 
-        public LibraryAccessForm()
+        public LibraryAccessForm(LibraryAccessService service)
         {
             InitializeComponent();
+            this.service = service;
         }
 
         private void createAccountLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CreateUserForm frm = new CreateUserForm();
+            CreateUserForm frm = new CreateUserForm(new CreateUserService());
             frm.Show();
         }
 
         private void reminderAccountLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            RemindAccountForm frm = new RemindAccountForm();
+            RemindAccountForm frm = new RemindAccountForm(new RemindAccountService());
             frm.Show();
         }
 
@@ -41,7 +42,7 @@ namespace eLibraryUI
         {
             try
             {
-                LibraryWelcomeForm frm = new LibraryWelcomeForm(service.UserLoginIn(userNameValue.Text,passwordValue.Text));
+                LibraryWelcomeForm frm = new LibraryWelcomeForm(service.UserLoginIn(userNameValue.Text,passwordValue.Text), new LibraryWelcomeService());
                 frm.Show();
                 this.Hide();
             }

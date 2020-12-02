@@ -16,15 +16,16 @@ namespace eLibraryUI
 {
     public partial class LibraryWelcomeForm : Form
     {
-        private LibraryWelcomeService service = new LibraryWelcomeService();
+        private LibraryWelcomeService service;
 
         private UserModel loggedUser;
 
 
-        public LibraryWelcomeForm(UserModel model)
+        public LibraryWelcomeForm(UserModel model, LibraryWelcomeService service)
         {
             InitializeComponent();
             loggedUser = model;
+            this.service = service;
             firstNameLabel.Text = loggedUser.FirstName;
             //If there is a new book of users favorite authors, send a notification
             service.NewBookNotification(loggedUser);
@@ -34,7 +35,7 @@ namespace eLibraryUI
 
         private void readBooksButton_Click(object sender, EventArgs e)
         {
-            ReadBooksForm frm = new ReadBooksForm(loggedUser);
+            ReadBooksForm frm = new ReadBooksForm(loggedUser, new ReadBooksService());
             frm.Show();
             this.Close();
         }
@@ -48,7 +49,7 @@ namespace eLibraryUI
 
         private void addNewBookButton_Click(object sender, EventArgs e)
         {
-            AddNewBookForm frm = new AddNewBookForm(loggedUser);
+            AddNewBookForm frm = new AddNewBookForm(loggedUser, new AddNewBookService());
             frm.Show();
         }
 
@@ -64,7 +65,7 @@ namespace eLibraryUI
 
         private void statisticsButton_Click(object sender, EventArgs e)
         {
-            StatisticsForm frm = new StatisticsForm(loggedUser);
+            StatisticsForm frm = new StatisticsForm(loggedUser, new StatisticsService());
             frm.Show();
             this.Close();
         }

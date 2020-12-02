@@ -16,12 +16,13 @@ namespace eLibraryUI
 {
     public partial class SearchBookForm : Form
     {
-        SearchBookService service = new SearchBookService();
+        private SearchBookService service;
         private UserModel loggedUser;
 
-        public SearchBookForm(UserModel model)
+        public SearchBookForm(UserModel model, SearchBookService service)
         {
             InitializeComponent();
+            this.service = service;
             loggedUser = model;
             searchTypeDropDown.DataSource = service.FillListOfSearchTypes();
         }

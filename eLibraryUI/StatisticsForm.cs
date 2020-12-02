@@ -16,12 +16,13 @@ namespace eLibraryUI
 {
     public partial class StatisticsForm : Form
     {
-        StatisticsService service = new StatisticsService();
+        private StatisticsService service;
         private UserModel loggedUser;
 
-        public StatisticsForm(UserModel model)
+        public StatisticsForm(UserModel model, StatisticsService service)
         {
             InitializeComponent();
+            this.service = service;
             loggedUser = model;
             //Check if book lists of user are created. If not, create a new ones
             service.PreventNullError(ref loggedUser);
@@ -31,7 +32,7 @@ namespace eLibraryUI
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LibraryWelcomeForm frm = new LibraryWelcomeForm(loggedUser);
+            LibraryWelcomeForm frm = new LibraryWelcomeForm(loggedUser, new LibraryWelcomeService());
             frm.Show();
             this.Close();
         }

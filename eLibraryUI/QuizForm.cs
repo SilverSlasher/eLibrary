@@ -25,7 +25,7 @@ namespace eLibraryUI
          *When more than 1 book is matched, the one is taking randomly
          */
 
-        QuizService service = new QuizService();
+        private QuizService service;
 
         //Every anwser has 2 items. First is text of answer so AnswerText is 0, and variable is more understandable
         private const int AnswerText = 0;
@@ -34,9 +34,10 @@ namespace eLibraryUI
 
 
 
-        public QuizForm(UserModel model)
+        public QuizForm(UserModel model, QuizService service)
         {
             InitializeComponent();
+            this.service = service;
             loggedUser = model;
             service.CurrentStepIndex = 0;
             InitializeQuestion();

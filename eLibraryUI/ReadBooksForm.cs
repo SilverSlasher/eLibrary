@@ -16,11 +16,9 @@ namespace eLibraryUI
 {
     public partial class ReadBooksForm : Form
     {
-        private ReadBooksService service = new ReadBooksService();
         private UserModel loggedUser;
-        
 
-        public ReadBooksForm(UserModel model)
+        public ReadBooksForm(UserModel model, ReadBooksService service)
         {
             InitializeComponent();
             loggedUser = model;
@@ -30,14 +28,14 @@ namespace eLibraryUI
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LibraryWelcomeForm frm = new LibraryWelcomeForm(loggedUser);
+            LibraryWelcomeForm frm = new LibraryWelcomeForm(loggedUser, new LibraryWelcomeService());
             frm.Show();
             this.Close();
         }
 
         private void booksToReadButton_Click(object sender, EventArgs e)
         {
-            ToReadForm frm = new ToReadForm(loggedUser);
+            ToReadForm frm = new ToReadForm(loggedUser, new ToReadService());
             frm.Show();
             this.Close();
         }
@@ -71,7 +69,7 @@ namespace eLibraryUI
 
         private void favoriteAuthorsButton_Click(object sender, EventArgs e)
         {
-            FavoriteAuthorsForm frm = new FavoriteAuthorsForm(loggedUser);
+            FavoriteAuthorsForm frm = new FavoriteAuthorsForm(loggedUser, new FavoriteAuthorsService());
             frm.Show();
         }
         private void bookDescriptionLabel_Click(object sender, EventArgs e)

@@ -12,7 +12,14 @@ namespace eLibraryClasses.UserInterfaceServices
     {
         private static bool isAdded = false;
 
-        public List<BookModel> BooksNotUsedBefore(UserModel loggedUser)
+        public List<BookModel> RandomizedBooks { get; } = new List<BookModel>();
+
+        public RandomBookService(UserModel loggedUser)
+        {
+            RandomizedBooks = BooksNotUsedBefore(loggedUser);
+        }
+
+        private List<BookModel> BooksNotUsedBefore(UserModel loggedUser)
         {
             List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
 
@@ -88,7 +95,7 @@ namespace eLibraryClasses.UserInterfaceServices
             }
 
             //Button starts from 1, and list index start at 0 so right book is clicked button number - 1 )
-            loggedUser.ToReadBooks.Add(BooksNotUsedBefore(loggedUser).ElementAt(buttonClicked - 1));
+            loggedUser.ToReadBooks.Add(RandomizedBooks.ElementAt(buttonClicked - 1));
 
             FileConnectorCore.UpdateDataOfLoggedUser(loggedUser).SaveToUsersFile();
 

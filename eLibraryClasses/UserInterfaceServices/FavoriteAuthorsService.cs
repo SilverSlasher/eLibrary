@@ -18,7 +18,6 @@ namespace eLibraryClasses.UserInterfaceServices
 
             foreach (BookModel book in allBooks)
             {
-                //If the author was not appeared before, add author to list of authors
                 if (!output.Contains(book.Author))
                 {
                     output.Add(book.Author);

@@ -16,14 +16,15 @@ namespace eLibraryUI
 {
     public partial class FavoriteAuthorsForm : Form
     {
-        private FavoriteAuthorsService service = new FavoriteAuthorsService();
+        private FavoriteAuthorsService service;
 
         private UserModel loggedUser;
 
 
-        public FavoriteAuthorsForm(UserModel model)
+        public FavoriteAuthorsForm(UserModel model, FavoriteAuthorsService service)
         {
             InitializeComponent();
+            this.service = service;
             loggedUser = model;
             WireUpAuthors();
             //Checking if user is already subscribing favorite authors 

@@ -16,10 +16,12 @@ namespace eLibraryUI
 {
     public partial class RemindAccountForm : Form
     {
-        RemindAccountService service = new RemindAccountService();
-        public RemindAccountForm()
+        private RemindAccountService service;
+
+        public RemindAccountForm(RemindAccountService service)
         {
             InitializeComponent();
+            this.service = service;
         }
 
         private void remindEmailButton_Click(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
+using eLibraryClasses.UserInterfaceServices;
 
 namespace eLibraryUI
 {
@@ -20,7 +21,7 @@ namespace eLibraryUI
 
             eLibraryClasses.GlobalConfig.InitializeConnections();
 
-            Application.Run(new LibraryAccessForm());
+            Application.Run(new LibraryAccessForm(new LibraryAccessService()));
         }
     }
 }

@@ -54,7 +54,6 @@
             this.title3BasicLabel = new System.Windows.Forms.Label();
             this.author3BasicLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.randomBook4Button = new System.Windows.Forms.Button();
             this.genre4Label = new System.Windows.Forms.Label();
             this.title4Label = new System.Windows.Forms.Label();
             this.author4Label = new System.Windows.Forms.Label();
@@ -78,6 +77,7 @@
             this.title6BasicLabel = new System.Windows.Forms.Label();
             this.author6BasicLabel = new System.Windows.Forms.Label();
             this.toReadButton = new System.Windows.Forms.Button();
+            this.randomBook4Button = new System.Windows.Forms.Button();
             this.bookDescriptionPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -133,7 +133,7 @@
             this.genre1Label.ForeColor = System.Drawing.Color.Black;
             this.genre1Label.Location = new System.Drawing.Point(3, 163);
             this.genre1Label.Name = "genre1Label";
-            this.genre1Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.genre1Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.genre1Label.Size = new System.Drawing.Size(166, 28);
             this.genre1Label.TabIndex = 8;
             this.genre1Label.Text = "genre";
@@ -145,7 +145,7 @@
             this.title1Label.ForeColor = System.Drawing.Color.Black;
             this.title1Label.Location = new System.Drawing.Point(3, 82);
             this.title1Label.Name = "title1Label";
-            this.title1Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.title1Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.title1Label.Size = new System.Drawing.Size(166, 57);
             this.title1Label.TabIndex = 7;
             this.title1Label.Text = "title";
@@ -157,7 +157,7 @@
             this.author1Label.ForeColor = System.Drawing.Color.Black;
             this.author1Label.Location = new System.Drawing.Point(8, 34);
             this.author1Label.Name = "author1Label";
-            this.author1Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.author1Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.author1Label.Size = new System.Drawing.Size(166, 24);
             this.author1Label.TabIndex = 5;
             this.author1Label.Text = "author";
@@ -230,7 +230,7 @@
             this.genre2Label.ForeColor = System.Drawing.Color.Black;
             this.genre2Label.Location = new System.Drawing.Point(3, 163);
             this.genre2Label.Name = "genre2Label";
-            this.genre2Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.genre2Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.genre2Label.Size = new System.Drawing.Size(166, 28);
             this.genre2Label.TabIndex = 8;
             this.genre2Label.Text = "genre";
@@ -242,7 +242,7 @@
             this.title2Label.ForeColor = System.Drawing.Color.Black;
             this.title2Label.Location = new System.Drawing.Point(3, 82);
             this.title2Label.Name = "title2Label";
-            this.title2Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.title2Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.title2Label.Size = new System.Drawing.Size(166, 57);
             this.title2Label.TabIndex = 7;
             this.title2Label.Text = "title";
@@ -254,7 +254,7 @@
             this.author2Label.ForeColor = System.Drawing.Color.Black;
             this.author2Label.Location = new System.Drawing.Point(8, 34);
             this.author2Label.Name = "author2Label";
-            this.author2Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.author2Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.author2Label.Size = new System.Drawing.Size(166, 24);
             this.author2Label.TabIndex = 5;
             this.author2Label.Text = "author";
@@ -327,7 +327,7 @@
             this.genre3Label.ForeColor = System.Drawing.Color.Black;
             this.genre3Label.Location = new System.Drawing.Point(3, 163);
             this.genre3Label.Name = "genre3Label";
-            this.genre3Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.genre3Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.genre3Label.Size = new System.Drawing.Size(166, 28);
             this.genre3Label.TabIndex = 8;
             this.genre3Label.Text = "genre";
@@ -339,7 +339,7 @@
             this.title3Label.ForeColor = System.Drawing.Color.Black;
             this.title3Label.Location = new System.Drawing.Point(3, 82);
             this.title3Label.Name = "title3Label";
-            this.title3Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.title3Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.title3Label.Size = new System.Drawing.Size(166, 57);
             this.title3Label.TabIndex = 7;
             this.title3Label.Text = "title";
@@ -351,7 +351,7 @@
             this.author3Label.ForeColor = System.Drawing.Color.Black;
             this.author3Label.Location = new System.Drawing.Point(8, 34);
             this.author3Label.Name = "author3Label";
-            this.author3Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.author3Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.author3Label.Size = new System.Drawing.Size(166, 24);
             this.author3Label.TabIndex = 5;
             this.author3Label.Text = "author";
@@ -406,25 +406,13 @@
             this.panel3.Size = new System.Drawing.Size(177, 191);
             this.panel3.TabIndex = 13;
             // 
-            // randomBook4Button
-            // 
-            this.randomBook4Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.randomBook4Button.ForeColor = System.Drawing.Color.Black;
-            this.randomBook4Button.Location = new System.Drawing.Point(0, 0);
-            this.randomBook4Button.Name = "randomBook4Button";
-            this.randomBook4Button.Size = new System.Drawing.Size(177, 191);
-            this.randomBook4Button.TabIndex = 17;
-            this.randomBook4Button.Text = "?";
-            this.randomBook4Button.UseVisualStyleBackColor = true;
-            this.randomBook4Button.Click += new System.EventHandler(this.randomBook4Button_Click);
-            // 
             // genre4Label
             // 
             this.genre4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.genre4Label.ForeColor = System.Drawing.Color.Black;
             this.genre4Label.Location = new System.Drawing.Point(3, 163);
             this.genre4Label.Name = "genre4Label";
-            this.genre4Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.genre4Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.genre4Label.Size = new System.Drawing.Size(166, 28);
             this.genre4Label.TabIndex = 8;
             this.genre4Label.Text = "genre";
@@ -436,7 +424,7 @@
             this.title4Label.ForeColor = System.Drawing.Color.Black;
             this.title4Label.Location = new System.Drawing.Point(3, 82);
             this.title4Label.Name = "title4Label";
-            this.title4Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.title4Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.title4Label.Size = new System.Drawing.Size(166, 57);
             this.title4Label.TabIndex = 7;
             this.title4Label.Text = "title";
@@ -448,7 +436,7 @@
             this.author4Label.ForeColor = System.Drawing.Color.Black;
             this.author4Label.Location = new System.Drawing.Point(8, 34);
             this.author4Label.Name = "author4Label";
-            this.author4Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.author4Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.author4Label.Size = new System.Drawing.Size(166, 24);
             this.author4Label.TabIndex = 5;
             this.author4Label.Text = "author";
@@ -521,7 +509,7 @@
             this.genre5Label.ForeColor = System.Drawing.Color.Black;
             this.genre5Label.Location = new System.Drawing.Point(3, 163);
             this.genre5Label.Name = "genre5Label";
-            this.genre5Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.genre5Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.genre5Label.Size = new System.Drawing.Size(166, 28);
             this.genre5Label.TabIndex = 8;
             this.genre5Label.Text = "genre";
@@ -533,7 +521,7 @@
             this.title5Label.ForeColor = System.Drawing.Color.Black;
             this.title5Label.Location = new System.Drawing.Point(3, 82);
             this.title5Label.Name = "title5Label";
-            this.title5Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.title5Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.title5Label.Size = new System.Drawing.Size(166, 57);
             this.title5Label.TabIndex = 7;
             this.title5Label.Text = "title";
@@ -545,7 +533,7 @@
             this.author5Label.ForeColor = System.Drawing.Color.Black;
             this.author5Label.Location = new System.Drawing.Point(8, 34);
             this.author5Label.Name = "author5Label";
-            this.author5Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.author5Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.author5Label.Size = new System.Drawing.Size(166, 24);
             this.author5Label.TabIndex = 5;
             this.author5Label.Text = "author";
@@ -618,7 +606,7 @@
             this.genre6Label.ForeColor = System.Drawing.Color.Black;
             this.genre6Label.Location = new System.Drawing.Point(3, 163);
             this.genre6Label.Name = "genre6Label";
-            this.genre6Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.genre6Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.genre6Label.Size = new System.Drawing.Size(166, 28);
             this.genre6Label.TabIndex = 8;
             this.genre6Label.Text = "genre";
@@ -630,7 +618,7 @@
             this.title6Label.ForeColor = System.Drawing.Color.Black;
             this.title6Label.Location = new System.Drawing.Point(3, 82);
             this.title6Label.Name = "title6Label";
-            this.title6Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.title6Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.title6Label.Size = new System.Drawing.Size(166, 57);
             this.title6Label.TabIndex = 7;
             this.title6Label.Text = "title";
@@ -642,7 +630,7 @@
             this.author6Label.ForeColor = System.Drawing.Color.Black;
             this.author6Label.Location = new System.Drawing.Point(8, 34);
             this.author6Label.Name = "author6Label";
-            this.author6Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.author6Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.author6Label.Size = new System.Drawing.Size(166, 24);
             this.author6Label.TabIndex = 5;
             this.author6Label.Text = "author";
@@ -694,6 +682,18 @@
             this.toReadButton.UseVisualStyleBackColor = false;
             this.toReadButton.Visible = false;
             this.toReadButton.Click += new System.EventHandler(this.toReadButton_Click);
+            // 
+            // randomBook4Button
+            // 
+            this.randomBook4Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.randomBook4Button.ForeColor = System.Drawing.Color.Black;
+            this.randomBook4Button.Location = new System.Drawing.Point(0, 0);
+            this.randomBook4Button.Name = "randomBook4Button";
+            this.randomBook4Button.Size = new System.Drawing.Size(177, 191);
+            this.randomBook4Button.TabIndex = 17;
+            this.randomBook4Button.Text = "?";
+            this.randomBook4Button.UseVisualStyleBackColor = true;
+            this.randomBook4Button.Click += new System.EventHandler(this.randomBook4Button_Click);
             // 
             // RandomBookForm
             // 
@@ -777,9 +777,9 @@
         private System.Windows.Forms.Button randomBook1Button;
         private System.Windows.Forms.Button randomBook2Button;
         private System.Windows.Forms.Button randomBook3Button;
-        private System.Windows.Forms.Button randomBook4Button;
         private System.Windows.Forms.Button randomBook5Button;
         private System.Windows.Forms.Button randomBook6Button;
         private System.Windows.Forms.Button toReadButton;
+        private System.Windows.Forms.Button randomBook4Button;
     }
 }

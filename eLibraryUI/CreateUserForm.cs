@@ -16,10 +16,11 @@ namespace eLibraryUI
 {
     public partial class CreateUserForm : Form
     {
-        private CreateUserService service = new CreateUserService();
+        private CreateUserService service;
 
-        public CreateUserForm()
+        public CreateUserForm(CreateUserService service)
         {
+            this.service = service;
             InitializeComponent();
         }
 
@@ -50,7 +51,7 @@ namespace eLibraryUI
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LibraryAccessForm frm = new LibraryAccessForm();
+            LibraryAccessForm frm = new LibraryAccessForm(new LibraryAccessService());
             frm.Show();
             this.Close();
         }

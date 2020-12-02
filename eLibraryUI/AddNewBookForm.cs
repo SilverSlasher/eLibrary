@@ -16,16 +16,17 @@ namespace eLibraryUI
 {
     public partial class AddNewBookForm : Form
     {
-        private AddNewBookService service = new AddNewBookService();
+        private AddNewBookService service;
 
         //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
 
-        public AddNewBookForm(UserModel model)
+        public AddNewBookForm(UserModel model, AddNewBookService service)
         {
             InitializeComponent();
             loggedUser = model;
+            this.service = service;
             //Assign to dropdown with genres a list of predefined ones
             genreDropDown.DataSource = service.ListOfGenres();
         }

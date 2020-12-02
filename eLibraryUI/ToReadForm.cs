@@ -15,19 +15,20 @@ namespace eLibraryUI
 {
     public partial class ToReadForm : Form
     {
-        ToReadService service = new ToReadService();
+        private ToReadService service;
         private UserModel loggedUser;
 
-        public ToReadForm(UserModel model)
+        public ToReadForm(UserModel model, ToReadService service)
         {
             InitializeComponent();
+            this.service = service;
             loggedUser = model;
             WireUpToReadList();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            ReadBooksForm frm = new ReadBooksForm(loggedUser);
+            ReadBooksForm frm = new ReadBooksForm(loggedUser, new ReadBooksService());
             frm.Show();
             this.Close();
         }

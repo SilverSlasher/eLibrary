@@ -17,14 +17,15 @@ namespace eLibraryUI
 {
     public partial class RandomBookForm : Form
     {
-        private RandomBookService service = new RandomBookService();
+        private RandomBookService service;
         private UserModel loggedUser;
         private int buttonClicked;
 
 
-        public RandomBookForm(UserModel model)
+        public RandomBookForm(UserModel model, RandomBookService service)
         {
             InitializeComponent();
+            this.service = service;
             loggedUser = model;
             //Assign randomized books to buttons
             WriteDownRandomizedBook(author1Label, title1Label, genre1Label, 0);
@@ -152,9 +153,9 @@ namespace eLibraryUI
         )
         {
             
-            authorLabel.Text = service.BooksNotUsedBefore(loggedUser).ElementAt(optionNumber).Author;
-            titleLabel.Text = service.BooksNotUsedBefore(loggedUser).ElementAt(optionNumber).Title;
-            genreLabel.Text = service.BooksNotUsedBefore(loggedUser).ElementAt(optionNumber).Genre;
+            authorLabel.Text = service.RandomizedBooks.ElementAt(optionNumber).Author;
+            titleLabel.Text = service.RandomizedBooks.ElementAt(optionNumber).Title;
+            genreLabel.Text = service.RandomizedBooks.ElementAt(optionNumber).Genre;
         }
 
         //When 1 button is clicked by user, rest of buttons will be not available anymore
