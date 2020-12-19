@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\eLibraryClasses",
+    "\\eLibraryClasses\\DataAccess",
+    "\\eLibraryClasses\\Services"
   ],
   "SelectedNode": "\\eLibrary.sln",
   "PreviewInSolutionExplorer": false

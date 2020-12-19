@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class SearchBookForm : Form
     {
-        private SearchBookService service;
+        private ISearchBookService service;
         private UserModel loggedUser;
 
-        public SearchBookForm(UserModel model, SearchBookService service)
+        public SearchBookForm(UserModel model, ISearchBookService service)
         {
             InitializeComponent();
             this.service = service;

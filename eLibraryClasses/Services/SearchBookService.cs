@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class SearchBookService
+    public class SearchBookService : ISearchBookService
     {
         //Create a list of available types of search
         public List<string> FillListOfSearchTypes()

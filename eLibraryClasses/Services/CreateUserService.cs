@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class CreateUserService
+    public class CreateUserService : ICreateUserService
     {
         public void IsUsernameOrEmailCurrentlyExisting(string userName, string email)
         {

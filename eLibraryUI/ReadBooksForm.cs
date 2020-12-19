@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
@@ -18,7 +19,7 @@ namespace eLibraryUI
     {
         private UserModel loggedUser;
 
-        public ReadBooksForm(UserModel model, ReadBooksService service)
+        public ReadBooksForm(UserModel model, IReadBooksService service)
         {
             InitializeComponent();
             loggedUser = model;

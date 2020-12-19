@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class ToReadService
+    public class ToReadService : IToReadService
     {
-        public void AddBookToUserReadBookshelf(ref UserModel loggedUser, BookModel selectedItem)
+        public void AddBookToUserReadBookshelf(UserModel loggedUser, BookModel selectedItem)
         {
             //Check if book lists of user are created. If not, create a new ones
             PreventNullError(loggedUser);

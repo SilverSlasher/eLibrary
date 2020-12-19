@@ -11,8 +11,9 @@ using System.Windows.Forms;
 using System.Xml;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
@@ -25,7 +26,7 @@ namespace eLibraryUI
          *When more than 1 book is matched, the one is taking randomly
          */
 
-        private QuizService service;
+        private IQuizService service;
 
         //Every anwser has 2 items. First is text of answer so AnswerText is 0, and variable is more understandable
         private const int AnswerText = 0;
@@ -34,12 +35,12 @@ namespace eLibraryUI
 
 
 
-        public QuizForm(UserModel model, QuizService service)
+        public QuizForm(UserModel model, IQuizService service)
         {
             InitializeComponent();
             this.service = service;
             loggedUser = model;
-            service.CurrentStepIndex = 0;
+            service.SetCurrentStepIndex(0);
             InitializeQuestion();
         }
 
@@ -60,13 +61,13 @@ namespace eLibraryUI
         private void InitializeQuestion()
         {
             //Change text of question label to text of the question got from text file. Number of question is same as current step of form
-            questionLabel.Text = service.Questions[service.CurrentStepIndex].Inquiry;
+            questionLabel.Text = service.GetQuestion(service.GetCurrentStepIndex()).Inquiry;
             
             //Change text of first answer label to text of the answer got from text file.
-            firstAnswerButton.Text = service.Questions[service.CurrentStepIndex].FirstAnswer[AnswerText];
-            secondAnswerButton.Text = service.Questions[service.CurrentStepIndex].SecondAnswer[AnswerText];
-            thirdAnswerButton.Text = service.Questions[service.CurrentStepIndex].ThirdAnswer[AnswerText];
-            fourthAnswerButton.Text = service.Questions[service.CurrentStepIndex].FourthAnswer[AnswerText];
+            firstAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).FirstAnswer[AnswerText];
+            secondAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).SecondAnswer[AnswerText];
+            thirdAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).ThirdAnswer[AnswerText];
+            fourthAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).FourthAnswer[AnswerText];
 
             //Next question button shouldn't be visible after load a new question, so set variable to false
             isNextQuestionButtonVisible = false;
@@ -175,7 +176,7 @@ namespace eLibraryUI
         private void MatchBook()
         {
             //If current index is 3 (max one), show finish panel of this form
-            if (service.CurrentStepIndex == 3)
+            if (service.GetCurrentStepIndex() == 3)
             {
                 finalBookPanel.Visible = true;
                 service.RandomizeMatchedBooks();
@@ -185,16 +186,16 @@ namespace eLibraryUI
 
         private void WriteDownMatchedBook()
         {
-            authorLabel.Text = service.MatchedBooks[0].Author;
-            titleLabel.Text = service.MatchedBooks[0].Title;
-            genreLabel.Text = service.MatchedBooks[0].Genre;
+            authorLabel.Text = service.GetMatchedBook(0).Author;
+            titleLabel.Text = service.GetMatchedBook(0).Title;
+            genreLabel.Text = service.GetMatchedBook(0).Genre;
         }
 
         private void toReadButton_Click(object sender, EventArgs e)
         {
             try
             {
-                service.TryToAddBookToBookshelf(ref loggedUser);
+                service.TryToAddBookToBookshelf(loggedUser);
             }
             catch (Exception exception)
             {

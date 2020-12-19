@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class ReadBooksService
+    public class ReadBooksService : IReadBooksService
     {
         //Randomize order of list of quotes and change text of label to quote
         public string RandomizeAndReturnQuote()

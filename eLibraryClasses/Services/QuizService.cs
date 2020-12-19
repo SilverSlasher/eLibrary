@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class QuizService
+    public class QuizService : IQuizService
     {
         /*
          *This form is not the intuitive one. I recommend that you should open a QuizFile.txt and check concurrently with reading code.
@@ -26,15 +27,35 @@ namespace eLibraryClasses.UserInterfaceServices
 
         private bool areBooksMatchedByPages = false;
 
-        public List<QuestionModel> Questions = GlobalConfig.QuizFile.FullFilePath().LoadFile().ConvertToQuestionModels();
+        private List<QuestionModel> Questions = GlobalConfig.QuizFile.FullFilePath().LoadFile().ConvertToQuestionModels();
 
         private List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
 
         public List<BookModel> MatchedBooks = new List<BookModel>();
 
-        public int CurrentStepIndex;
+        private int CurrentStepIndex;
 
         private bool isAddedNow = false;
+
+
+        public int GetCurrentStepIndex()
+        {
+            return this.CurrentStepIndex;
+        }
+        public void SetCurrentStepIndex(int stepNumber)
+        {
+            this.CurrentStepIndex = stepNumber;
+        }
+
+        public BookModel GetMatchedBook(int index)
+        {
+            return MatchedBooks[index];
+        }
+
+        public QuestionModel GetQuestion(int stepNumber)
+        {
+            return this.Questions[stepNumber];
+        }
 
         //Taking attribute from chosen answer, and add books with right genre from all books, to matched books.
         private void RefreshMatchedBooksByGenre(int selectedOption)
@@ -277,7 +298,7 @@ namespace eLibraryClasses.UserInterfaceServices
             }
         }
 
-        public void TryToAddBookToBookshelf(ref UserModel loggedUser)
+        public void TryToAddBookToBookshelf(UserModel loggedUser)
         {
             //If user added book to bookshelf a moment before, give a warning
             if (isAddedNow)

@@ -9,17 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class StatisticsForm : Form
     {
-        private StatisticsService service;
+        private IStatisticsService service;
         private UserModel loggedUser;
 
-        public StatisticsForm(UserModel model, StatisticsService service)
+        public StatisticsForm(UserModel model, IStatisticsService service)
         {
             InitializeComponent();
             this.service = service;

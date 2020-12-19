@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class RemindAccountForm : Form
     {
-        private RemindAccountService service;
+        private IRemindAccountService service;
 
-        public RemindAccountForm(RemindAccountService service)
+        public RemindAccountForm(IRemindAccountService service)
         {
             InitializeComponent();
             this.service = service;

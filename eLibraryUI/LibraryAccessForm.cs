@@ -11,16 +11,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class LibraryAccessForm : Form
     {
-        private LibraryAccessService service;
+        private ILibraryAccessService service;
 
-        public LibraryAccessForm(LibraryAccessService service)
+        public LibraryAccessForm(ILibraryAccessService service)
         {
             InitializeComponent();
             this.service = service;

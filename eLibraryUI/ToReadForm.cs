@@ -8,17 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class ToReadForm : Form
     {
-        private ToReadService service;
+        private IToReadService service;
         private UserModel loggedUser;
 
-        public ToReadForm(UserModel model, ToReadService service)
+        public ToReadForm(UserModel model, IToReadService service)
         {
             InitializeComponent();
             this.service = service;
@@ -64,7 +65,7 @@ namespace eLibraryUI
         {
             try
             {
-                service.AddBookToUserReadBookshelf(ref loggedUser, (BookModel)toReadListBox.SelectedItem);
+                service.AddBookToUserReadBookshelf(loggedUser, (BookModel)toReadListBox.SelectedItem);
                 RefreshThisForm();
             }
             catch (Exception exception)

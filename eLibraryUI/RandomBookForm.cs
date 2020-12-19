@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 
 namespace eLibraryUI
 {
     public partial class RandomBookForm : Form
     {
-        private RandomBookService service;
+        private IRandomBookService service;
         private UserModel loggedUser;
         private int buttonClicked;
 
 
-        public RandomBookForm(UserModel model, RandomBookService service)
+        public RandomBookForm(UserModel model, IRandomBookService service)
         {
             InitializeComponent();
             this.service = service;
@@ -153,9 +154,9 @@ namespace eLibraryUI
         )
         {
             
-            authorLabel.Text = service.RandomizedBooks.ElementAt(optionNumber).Author;
-            titleLabel.Text = service.RandomizedBooks.ElementAt(optionNumber).Title;
-            genreLabel.Text = service.RandomizedBooks.ElementAt(optionNumber).Genre;
+            authorLabel.Text = service.GetRandomizedBooks().ElementAt(optionNumber).Author;
+            titleLabel.Text = service.GetRandomizedBooks().ElementAt(optionNumber).Title;
+            genreLabel.Text = service.GetRandomizedBooks().ElementAt(optionNumber).Genre;
         }
 
         //When 1 button is clicked by user, rest of buttons will be not available anymore

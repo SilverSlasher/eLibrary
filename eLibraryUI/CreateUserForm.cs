@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class CreateUserForm : Form
     {
-        private CreateUserService service;
+        private ICreateUserService service;
 
-        public CreateUserForm(CreateUserService service)
+        public CreateUserForm(ICreateUserService service)
         {
             this.service = service;
             InitializeComponent();

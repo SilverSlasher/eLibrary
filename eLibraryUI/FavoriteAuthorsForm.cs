@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class FavoriteAuthorsForm : Form
     {
-        private FavoriteAuthorsService service;
+        private IFavoriteAuthorsService service;
 
         private UserModel loggedUser;
 
 
-        public FavoriteAuthorsForm(UserModel model, FavoriteAuthorsService service)
+        public FavoriteAuthorsForm(UserModel model, IFavoriteAuthorsService service)
         {
             InitializeComponent();
             this.service = service;

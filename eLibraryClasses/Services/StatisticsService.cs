@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class StatisticsService
+    public class StatisticsService : IStatisticsService
     {
         public void PreventNullError(ref UserModel loggedUser)
         {

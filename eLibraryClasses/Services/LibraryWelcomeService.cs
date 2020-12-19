@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class LibraryWelcomeService
+    public class LibraryWelcomeService : ILibraryWelcomeService
     {
         private List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
 

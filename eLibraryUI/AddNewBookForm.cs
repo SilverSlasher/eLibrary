@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class AddNewBookForm : Form
     {
-        private AddNewBookService service;
+        private IAddNewBookService service;
 
         //Create new local UserModel to store logged user data got from form closed before
         private UserModel loggedUser;
 
 
-        public AddNewBookForm(UserModel model, AddNewBookService service)
+        public AddNewBookForm(UserModel model, IAddNewBookService service)
         {
             InitializeComponent();
             loggedUser = model;

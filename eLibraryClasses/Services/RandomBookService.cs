@@ -4,19 +4,25 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
 
-namespace eLibraryClasses.UserInterfaceServices
+namespace eLibraryClasses.Services
 {
-    public class RandomBookService
+    public class RandomBookService : IRandomBookService
     {
         private static bool isAdded = false;
 
-        public List<BookModel> RandomizedBooks { get; } = new List<BookModel>();
+        private List<BookModel> RandomizedBooks { get; } = new List<BookModel>();
 
         public RandomBookService(UserModel loggedUser)
         {
             RandomizedBooks = BooksNotUsedBefore(loggedUser);
+        }
+
+        public List<BookModel> GetRandomizedBooks()
+        {
+            return RandomizedBooks;
         }
 
         private List<BookModel> BooksNotUsedBefore(UserModel loggedUser)
@@ -84,10 +90,7 @@ namespace eLibraryClasses.UserInterfaceServices
         }
 
  
-        public void AddBookToUserToReadBookshelf(
-            UserModel loggedUser,
-            int buttonClicked
-            )
+        public void AddBookToUserToReadBookshelf(UserModel loggedUser, int buttonClicked)
         {
             if (isAdded)
             {

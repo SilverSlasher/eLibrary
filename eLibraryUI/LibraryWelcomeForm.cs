@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
+using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.UserInterfaceServices;
+using eLibraryClasses.Services;
 
 namespace eLibraryUI
 {
     public partial class LibraryWelcomeForm : Form
     {
-        private LibraryWelcomeService service;
+        private ILibraryWelcomeService service;
 
         private UserModel loggedUser;
 
 
-        public LibraryWelcomeForm(UserModel model, LibraryWelcomeService service)
+        public LibraryWelcomeForm(UserModel model, ILibraryWelcomeService service)
         {
             InitializeComponent();
             loggedUser = model;
