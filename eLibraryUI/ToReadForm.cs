@@ -8,28 +8,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
+using eLibraryClasses.UI_Forms_Logic.Services;
 
 namespace eLibraryUI
 {
     public partial class ToReadForm : Form
     {
-        private IToReadService service;
-        private UserModel loggedUser;
+        private readonly IToReadService _toReadService;
+        private readonly IReadBooksService _readBooksService;
+        private readonly ILibraryWelcomeService _welcomeService;
+        private readonly IFavoriteAuthorsService _favoriteAuthorsService;
+        private readonly IAddNewBookService _addNewBookService;
+        private readonly IStatisticsService _statisticsService;
+        private readonly ISearchBookService _searchBookService;
+        private readonly IRandomBookService _randomBookService;
+        private readonly IQuizService _quizService;
+        private readonly UserModel _loggedUser;
 
-        public ToReadForm(UserModel model, IToReadService service)
+        public ToReadForm(UserModel model,
+            IToReadService toReadService,
+            IReadBooksService readBooksService,
+            ILibraryWelcomeService welcomeService,
+            IFavoriteAuthorsService favoriteAuthorsService,
+            IAddNewBookService addNewBookService,
+            IStatisticsService statisticsService,
+            ISearchBookService searchBookService,
+            IRandomBookService randomBookService,
+            IQuizService quizService)
         {
             InitializeComponent();
-            this.service = service;
-            loggedUser = model;
+            _toReadService = toReadService;
+            _readBooksService = readBooksService;
+            _welcomeService = welcomeService;
+            _favoriteAuthorsService = favoriteAuthorsService;
+            _addNewBookService = addNewBookService;
+            _statisticsService = statisticsService;
+            _searchBookService = searchBookService;
+            _randomBookService = randomBookService;
+            _quizService = quizService;
+            _loggedUser = model;
             WireUpToReadList();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            ReadBooksForm frm = new ReadBooksForm(loggedUser, new ReadBooksService());
+            ReadBooksForm frm = new ReadBooksForm(_loggedUser, _readBooksService, _welcomeService, _toReadService, _favoriteAuthorsService, _readBooksService, _addNewBookService, _statisticsService, _searchBookService, _randomBookService, _quizService );
             frm.Show();
             this.Close();
         }
@@ -38,7 +63,7 @@ namespace eLibraryUI
         private void WireUpToReadList()
         {
             toReadListBox.DataSource = null;
-            toReadListBox.DataSource = loggedUser.ToReadBooks;
+            toReadListBox.DataSource = _loggedUser.ToReadBooks;
             toReadListBox.DisplayMember = "Title";
         }
 
@@ -65,7 +90,7 @@ namespace eLibraryUI
         {
             try
             {
-                service.AddBookToUserReadBookshelf(loggedUser, (BookModel)toReadListBox.SelectedItem);
+                _toReadService.AddBookToUserReadBookshelf(_loggedUser, (BookModel)toReadListBox.SelectedItem);
                 RefreshThisForm();
             }
             catch (Exception exception)
@@ -86,7 +111,7 @@ namespace eLibraryUI
             WireUpToReadList();
 
             //If there are any more books in user "to read bookshelf", select the first one
-            if (loggedUser.ToReadBooks.Any())
+            if (_loggedUser.ToReadBooks.Any())
             {
                 toReadListBox.SelectedIndex = 0;
             }

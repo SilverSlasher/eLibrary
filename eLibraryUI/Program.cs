@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
-using eLibraryClasses.Services;
+using Autofac;
+using Autofac.Diagnostics;
+using eLibraryUI.Autofac_logic;
 
 namespace eLibraryUI
 {
@@ -21,7 +24,13 @@ namespace eLibraryUI
 
             eLibraryClasses.GlobalConfig.InitializeConnections();
 
-            Application.Run(new LibraryAccessForm(new LibraryAccessService()));
+            var container = ContainerConfig.Configure();
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IStartUp>();
+                app.Run();
+            }
         }
     }
 }

@@ -9,25 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
 
 namespace eLibraryUI
 {
     public partial class AddNewBookForm : Form
     {
-        private IAddNewBookService service;
+        private readonly IAddNewBookService _service;
 
         //Create new local UserModel to store logged user data got from form closed before
-        private UserModel loggedUser;
+        private readonly UserModel _loggedUser;
 
 
         public AddNewBookForm(UserModel model, IAddNewBookService service)
         {
             InitializeComponent();
-            loggedUser = model;
-            this.service = service;
+            _loggedUser = model;
+            _service = service;
             //Assign to dropdown with genres a list of predefined ones
             genreDropDown.DataSource = service.ListOfGenres();
         }
@@ -38,7 +37,7 @@ namespace eLibraryUI
         {
             try
             {
-                service.ValidateForm(authorValue.Text, titleValue.Text, pagesValue.Text);
+                _service.ValidateForm(authorValue.Text, titleValue.Text, pagesValue.Text);
             }
             catch (Exception exception)
             {
@@ -46,13 +45,13 @@ namespace eLibraryUI
                 return;
             }
 
-            service.PrepareNewBook(
+            _service.PrepareNewBook(
                 authorValue.Text,
                 titleValue.Text,
                 pagesValue.Text,
                 genreDropDown.SelectedItem.ToString(),
                 descriptionValue.Text,
-                loggedUser);
+                _loggedUser);
 
             this.Close();
             MessageBox.Show($"Poprawnie dodano książkę o tytule {titleValue.Text}");

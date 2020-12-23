@@ -27,7 +27,7 @@ namespace eLibraryClasses
         //Creating connections between application and files
         public static void InitializeConnections()
         {
-            FilesConnector text = new FilesConnector();
+            DataConnection text = new DataConnection();
             Connection = text;
         }
 

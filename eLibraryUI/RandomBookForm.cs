@@ -1,33 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using eLibraryClasses;
-using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
 
 
 namespace eLibraryUI
 {
     public partial class RandomBookForm : Form
     {
-        private IRandomBookService service;
-        private UserModel loggedUser;
-        private int buttonClicked;
+        private readonly IRandomBookService _randomBookService;
+        private readonly ISearchBookService _searchBookService;
+        private readonly ILibraryWelcomeService _welcomeService;
+        private readonly IReadBooksService _readBooksService;
+        private readonly IQuizService _quizService;
+        private readonly IAddNewBookService _addNewBookService;
+        private readonly IStatisticsService _statisticsService;
+        private readonly IToReadService _toReadService;
+        private readonly IFavoriteAuthorsService _favoriteAuthorsService;
+        private readonly UserModel _loggedUser;
+        private int _buttonClicked;
 
 
-        public RandomBookForm(UserModel model, IRandomBookService service)
+        public RandomBookForm(UserModel model,
+            IRandomBookService randomBookService,
+            ISearchBookService searchBookService,
+            ILibraryWelcomeService welcomeService,
+            IReadBooksService readBooksService,
+            IQuizService quizService,
+            IAddNewBookService addNewBookService,
+            IStatisticsService statisticsService,
+            IToReadService toReadService, 
+            IFavoriteAuthorsService favoriteAuthorsService)
         {
             InitializeComponent();
-            this.service = service;
-            loggedUser = model;
+            _randomBookService = randomBookService;
+            _searchBookService = searchBookService;
+            _welcomeService = welcomeService;
+            _readBooksService = readBooksService;
+            _quizService = quizService;
+            _addNewBookService = addNewBookService;
+            _statisticsService = statisticsService;
+            _toReadService = toReadService;
+            _favoriteAuthorsService = favoriteAuthorsService;
+            _loggedUser = model;
+
+            //Make new randomize of books every time form is open
+            _randomBookService.RandomizeBooks();
+
+
             //Assign randomized books to buttons
             WriteDownRandomizedBook(author1Label, title1Label, genre1Label, 0);
             WriteDownRandomizedBook(author2Label, title2Label, genre2Label, 1);
@@ -39,7 +60,7 @@ namespace eLibraryUI
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            ChooseBookForm frm = new ChooseBookForm(loggedUser);
+            ChooseBookForm frm = new ChooseBookForm(_loggedUser, _searchBookService, _welcomeService, _readBooksService, _randomBookService, _quizService, _addNewBookService, _statisticsService, _toReadService, _favoriteAuthorsService);
             frm.Show();
             this.Close();
         }
@@ -127,7 +148,7 @@ namespace eLibraryUI
         {
             try
             {
-                service.AddBookToUserToReadBookshelf(loggedUser, buttonClicked);
+                _randomBookService.AddBookToUserToReadBookshelf(_loggedUser, _buttonClicked);
             }
             catch (Exception exception)
             {
@@ -142,7 +163,7 @@ namespace eLibraryUI
             //Add option to add randomized book to "To read" bookshelf
             toReadButton.Visible = true;
             //Return index of clicked button
-            buttonClicked = buttonNumber;
+            _buttonClicked = buttonNumber;
         }
 
         //Assign randomized books to buttons
@@ -154,9 +175,9 @@ namespace eLibraryUI
         )
         {
             
-            authorLabel.Text = service.GetRandomizedBooks().ElementAt(optionNumber).Author;
-            titleLabel.Text = service.GetRandomizedBooks().ElementAt(optionNumber).Title;
-            genreLabel.Text = service.GetRandomizedBooks().ElementAt(optionNumber).Genre;
+            authorLabel.Text = _randomBookService.GetRandomizedBooks().ElementAt(optionNumber).Author;
+            titleLabel.Text = _randomBookService.GetRandomizedBooks().ElementAt(optionNumber).Title;
+            genreLabel.Text = _randomBookService.GetRandomizedBooks().ElementAt(optionNumber).Genre;
         }
 
         //When 1 button is clicked by user, rest of buttons will be not available anymore

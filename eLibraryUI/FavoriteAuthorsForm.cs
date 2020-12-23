@@ -9,44 +9,43 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
 
 namespace eLibraryUI
 {
     public partial class FavoriteAuthorsForm : Form
     {
-        private IFavoriteAuthorsService service;
+        private readonly IFavoriteAuthorsService _service;
 
-        private UserModel loggedUser;
+        private readonly UserModel _loggedUser;
 
 
         public FavoriteAuthorsForm(UserModel model, IFavoriteAuthorsService service)
         {
             InitializeComponent();
-            this.service = service;
-            loggedUser = model;
+            _service = service;
+            _loggedUser = model;
             WireUpAuthors();
             //Checking if user is already subscribing favorite authors 
-            service.SettingUpCheckBox(subscriptionCheckBox.Checked, loggedUser);
+            service.SettingUpCheckBox(subscriptionCheckBox.Checked, _loggedUser);
         }
 
         //Wire up dropdowns with data from user and all authors
         private void WireUpAuthors()
         {
             favoriteAuthorsDropDown.DataSource = null;
-            favoriteAuthorsDropDown.DataSource = loggedUser.FavoriteAuthors;
+            favoriteAuthorsDropDown.DataSource = _loggedUser.FavoriteAuthors;
 
             addFavoriteAuthorDropDown.DataSource = null;
-            addFavoriteAuthorDropDown.DataSource = service.AvailableAuthors();
+            addFavoriteAuthorDropDown.DataSource = _service.AvailableAuthors();
         }
 
         private void addAuthorButton_Click(object sender, EventArgs e)
         {
             try
             {
-                service.AddAuthorToUserFavoriteList(loggedUser, (string)addFavoriteAuthorDropDown.SelectedItem);
+                _service.AddAuthorToUserFavoriteList(_loggedUser, (string)addFavoriteAuthorDropDown.SelectedItem);
             }
             catch (Exception exception)
             {
@@ -62,7 +61,7 @@ namespace eLibraryUI
         {
             try
             {
-                service.DeleteAuthorFromUserFavoriteList(loggedUser, (string)favoriteAuthorsDropDown.SelectedItem);
+                _service.DeleteAuthorFromUserFavoriteList(_loggedUser, (string)favoriteAuthorsDropDown.SelectedItem);
             }
             catch (Exception exception)
             {
@@ -79,13 +78,13 @@ namespace eLibraryUI
 
         private void subscriptionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            service.SettingUpSubscription(subscriptionCheckBox.Checked,loggedUser);
+            _service.SettingUpSubscription(subscriptionCheckBox.Checked,_loggedUser);
         }
 
         //If there are more authors on the list, take a focus on first
         public void FocusFirstAuthorOnDropDown()
         {
-            if (loggedUser.FavoriteAuthors.Any())
+            if (_loggedUser.FavoriteAuthors.Any())
             {
                 favoriteAuthorsDropDown.SelectedIndex = 0;
             }

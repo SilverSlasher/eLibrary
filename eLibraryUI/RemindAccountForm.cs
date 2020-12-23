@@ -9,27 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
 
 namespace eLibraryUI
 {
     public partial class RemindAccountForm : Form
     {
-        private IRemindAccountService service;
+        private readonly IRemindAccountService _service;
 
         public RemindAccountForm(IRemindAccountService service)
         {
             InitializeComponent();
-            this.service = service;
+            _service = service;
         }
 
         private void remindEmailButton_Click(object sender, EventArgs e)
         {
             try
             {
-                service.RemindEmail(emailAddressValue.Text);
+                _service.RemindEmail(emailAddressValue.Text);
                 this.Close();
                 MessageBox.Show("Dane zostały wysłane na adres mailowy");
             }

@@ -9,19 +9,54 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
 
 namespace eLibraryUI
 {
     public partial class CreateUserForm : Form
     {
-        private ICreateUserService service;
+        private readonly ICreateUserService _userService;
+        private readonly ILibraryAccessService _accessService;
+        private readonly IDataConnection _connection;
+        private readonly IRemindAccountService _reminderService;
+        private readonly ILibraryWelcomeService _welcomeService;
+        private readonly IReadBooksService _readBooksService;
+        private readonly IAddNewBookService _addNewBookService;
+        private readonly IStatisticsService _statisticsService;
+        private readonly IToReadService _toReadService;
+        private readonly IFavoriteAuthorsService _favoriteAuthorsService;
+        private readonly ISearchBookService _searchBookService;
+        private readonly IQuizService _quizService;
+        private readonly IRandomBookService _randomBookService;
 
-        public CreateUserForm(ICreateUserService service)
+        public CreateUserForm(ICreateUserService userService,
+            ILibraryAccessService accessService,
+            IDataConnection connection,
+            IRemindAccountService reminderService,
+            ILibraryWelcomeService welcomeService,
+            IReadBooksService readBooksService,
+            IAddNewBookService addNewBookService,
+            IStatisticsService statisticsService,
+            IToReadService toReadService,
+            IFavoriteAuthorsService favoriteAuthorsService,
+            ISearchBookService searchBookService,
+            IQuizService quizService,
+            IRandomBookService randomBookService)
         {
-            this.service = service;
+            _userService = userService;
+            _accessService = accessService;
+            _connection = connection;
+            _reminderService = reminderService;
+            _welcomeService = welcomeService;
+            _readBooksService = readBooksService;
+            _addNewBookService = addNewBookService;
+            _statisticsService = statisticsService;
+            _toReadService = toReadService;
+            _favoriteAuthorsService = favoriteAuthorsService;
+            _searchBookService = searchBookService;
+            _quizService = quizService;
+            _randomBookService = randomBookService;
             InitializeComponent();
         }
 
@@ -29,7 +64,7 @@ namespace eLibraryUI
         {
             try
             {
-                service.ValidateForm(
+                _userService.ValidateForm(
                     userNameValue.Text,
                     passwordValue.Text,
                     repeatPasswordValue.Text,
@@ -44,15 +79,14 @@ namespace eLibraryUI
                 return;
             }
 
-            service.PrepareNewUser(firstNameValue.Text, lastNameValue.Text, userNameValue.Text, passwordValue.Text, emailValue.Text);
+            _userService.PrepareNewUser(firstNameValue.Text, lastNameValue.Text, userNameValue.Text, passwordValue.Text, emailValue.Text);
             this.Close();
             MessageBox.Show("Pomyślnie utworzono konto!");
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LibraryAccessForm frm = new LibraryAccessForm(new LibraryAccessService());
+            LibraryAccessForm frm = new LibraryAccessForm(_accessService, _connection, _userService, _reminderService, _welcomeService, _readBooksService, _addNewBookService, _statisticsService, _toReadService, _favoriteAuthorsService, _searchBookService, _randomBookService, _quizService);
             frm.Show();
             this.Close();
         }

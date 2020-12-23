@@ -11,9 +11,8 @@ using System.Windows.Forms;
 using System.Xml;
 using eLibraryClasses;
 using eLibraryClasses.DataAccess;
-using eLibraryClasses.Interfaces;
 using eLibraryClasses.Models;
-using eLibraryClasses.Services;
+using eLibraryClasses.UI_Forms_Logic.Interfaces;
 
 namespace eLibraryUI
 {
@@ -26,34 +25,64 @@ namespace eLibraryUI
          *When more than 1 book is matched, the one is taking randomly
          */
 
-        private IQuizService service;
+        private readonly IQuizService _service;
+        private readonly ISearchBookService _searchBookService;
+        private readonly IReadBooksService _readBooksService;
+        private readonly ILibraryWelcomeService _welcomeService;
+        private readonly IRandomBookService _randomBookService;
+        private readonly IQuizService _quizService;
+        private readonly IAddNewBookService _addNewBookService;
+        private readonly IStatisticsService _statisticsService;
+        private readonly IToReadService _toReadService;
+        private readonly IFavoriteAuthorsService _favoriteAuthorsService;
 
         //Every anwser has 2 items. First is text of answer so AnswerText is 0, and variable is more understandable
         private const int AnswerText = 0;
-        private bool isNextQuestionButtonVisible;
-        private UserModel loggedUser;
+        private bool _isNextQuestionButtonVisible;
+        private readonly UserModel _loggedUser;
 
 
 
-        public QuizForm(UserModel model, IQuizService service)
+        public QuizForm(UserModel model,
+            IQuizService service,
+            ISearchBookService searchBookService,
+            IReadBooksService readBooksService,
+            ILibraryWelcomeService welcomeService,
+            IRandomBookService randomBookService,
+            IQuizService quizService,
+            IAddNewBookService addNewBookService,
+            IStatisticsService statisticsService,
+            IToReadService toReadService,
+            IFavoriteAuthorsService favoriteAuthorsService
+
+        )
         {
             InitializeComponent();
-            this.service = service;
-            loggedUser = model;
+            _service = service;
+            _searchBookService = searchBookService;
+            _readBooksService = readBooksService;
+            _welcomeService = welcomeService;
+            _randomBookService = randomBookService;
+            _quizService = quizService;
+            _addNewBookService = addNewBookService;
+            _statisticsService = statisticsService;
+            _toReadService = toReadService;
+            _favoriteAuthorsService = favoriteAuthorsService;
+            _loggedUser = model;
             service.SetCurrentStepIndex(0);
             InitializeQuestion();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            ChooseBookForm frm = new ChooseBookForm(loggedUser);
+            ChooseBookForm frm = new ChooseBookForm(_loggedUser, _searchBookService, _welcomeService, _readBooksService, _randomBookService, _quizService, _addNewBookService, _statisticsService, _toReadService, _favoriteAuthorsService);
             frm.Show();
             this.Close();
         }
 
         private void backSecondButton_Click(object sender, EventArgs e)
         {
-            ChooseBookForm frm = new ChooseBookForm(loggedUser);
+            ChooseBookForm frm = new ChooseBookForm(_loggedUser, _searchBookService, _welcomeService, _readBooksService, _randomBookService, _quizService, _addNewBookService, _statisticsService, _toReadService, _favoriteAuthorsService);
             frm.Show();
             this.Close();
         }
@@ -61,16 +90,16 @@ namespace eLibraryUI
         private void InitializeQuestion()
         {
             //Change text of question label to text of the question got from text file. Number of question is same as current step of form
-            questionLabel.Text = service.GetQuestion(service.GetCurrentStepIndex()).Inquiry;
+            questionLabel.Text = _service.GetQuestion(_service.GetCurrentStepIndex()).Inquiry;
             
             //Change text of first answer label to text of the answer got from text file.
-            firstAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).FirstAnswer[AnswerText];
-            secondAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).SecondAnswer[AnswerText];
-            thirdAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).ThirdAnswer[AnswerText];
-            fourthAnswerButton.Text = service.GetQuestion(service.GetCurrentStepIndex()).FourthAnswer[AnswerText];
+            firstAnswerButton.Text = _service.GetQuestion(_service.GetCurrentStepIndex()).FirstAnswer[AnswerText];
+            secondAnswerButton.Text = _service.GetQuestion(_service.GetCurrentStepIndex()).SecondAnswer[AnswerText];
+            thirdAnswerButton.Text = _service.GetQuestion(_service.GetCurrentStepIndex()).ThirdAnswer[AnswerText];
+            fourthAnswerButton.Text = _service.GetQuestion(_service.GetCurrentStepIndex()).FourthAnswer[AnswerText];
 
             //Next question button shouldn't be visible after load a new question, so set variable to false
-            isNextQuestionButtonVisible = false;
+            _isNextQuestionButtonVisible = false;
         }
 
         private bool AnyRadioButtonClicked()
@@ -84,10 +113,10 @@ namespace eLibraryUI
         private void mainPanel_MouseMove(object sender, MouseEventArgs e)
         {
 
-            if (AnyRadioButtonClicked() && !isNextQuestionButtonVisible)
+            if (AnyRadioButtonClicked() && !_isNextQuestionButtonVisible)
             {
                 nextQuestionButton.Visible = true;
-                isNextQuestionButtonVisible = true;
+                _isNextQuestionButtonVisible = true;
             }
         }
 
@@ -123,12 +152,12 @@ namespace eLibraryUI
             switch (selectedOption)
             {
                 case 1:
-                    service.FirstAnswerMatchingMethod(selectedOption);
+                    _service.FirstAnswerMatchingMethod(selectedOption);
                     //Check if all info is got. If yes, show the best matched book
                     MatchBook();
                     //Jump to - means jump to question specified in QuizFile. Order is strict, as are the numbers.
                     //Every question is known and it's not in random order, so we can jump to strict numbers
-                    service.SetNextStepIndex(1);
+                    _service.SetNextStepIndex(1);
                     //Next question will be shown so hide "Next question" button, so user has to choose next option
                     HideNextQuestionButton();
                     firstAnswerButton.Checked = false;
@@ -137,27 +166,27 @@ namespace eLibraryUI
                     break;
 
                 case 2:
-                    service.SecondAnswerMatchingMethod(selectedOption);
+                    _service.SecondAnswerMatchingMethod(selectedOption);
                     MatchBook();
-                    service.SetNextStepIndex(3);
+                    _service.SetNextStepIndex(3);
                     HideNextQuestionButton();
                     secondAnswerButton.Checked = false;
                     InitializeQuestion();
                     break;
 
                 case 3:
-                    service.ThirdAnswerMatchingMethod(selectedOption);
+                    _service.ThirdAnswerMatchingMethod(selectedOption);
                     MatchBook();
-                    service.SetNextStepIndex(2);
+                    _service.SetNextStepIndex(2);
                     HideNextQuestionButton();
                     thirdAnswerButton.Checked = false;
                     InitializeQuestion();
                     break;
 
                 case 4:
-                    service.FourthAnswerMatchingMethod(selectedOption);
+                    _service.FourthAnswerMatchingMethod(selectedOption);
                     MatchBook();
-                    service.SetNextStepIndex(3);
+                    _service.SetNextStepIndex(3);
                     HideNextQuestionButton();
                     fourthAnswerButton.Checked = false;
                     InitializeQuestion();
@@ -169,33 +198,33 @@ namespace eLibraryUI
         //After going to next question, the option of going forth should be disabled
         private void HideNextQuestionButton()
         {
-            isNextQuestionButtonVisible = false;
+            _isNextQuestionButtonVisible = false;
             nextQuestionButton.Visible = false;
         }
 
         private void MatchBook()
         {
             //If current index is 3 (max one), show finish panel of this form
-            if (service.GetCurrentStepIndex() == 3)
+            if (_service.GetCurrentStepIndex() == 3)
             {
                 finalBookPanel.Visible = true;
-                service.RandomizeMatchedBooks();
+                _service.RandomizeMatchedBooks();
                 WriteDownMatchedBook();
             }
         }
 
         private void WriteDownMatchedBook()
         {
-            authorLabel.Text = service.GetMatchedBook(0).Author;
-            titleLabel.Text = service.GetMatchedBook(0).Title;
-            genreLabel.Text = service.GetMatchedBook(0).Genre;
+            authorLabel.Text = _service.GetMatchedBook(0).Author;
+            titleLabel.Text = _service.GetMatchedBook(0).Title;
+            genreLabel.Text = _service.GetMatchedBook(0).Genre;
         }
 
         private void toReadButton_Click(object sender, EventArgs e)
         {
             try
             {
-                service.TryToAddBookToBookshelf(loggedUser);
+                _service.TryToAddBookToBookshelf(_loggedUser);
             }
             catch (Exception exception)
             {
