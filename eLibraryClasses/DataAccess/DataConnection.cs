@@ -30,7 +30,7 @@ namespace eLibraryClasses.DataAccess
 
         public void CreateBook(BookModel book)
         {
-            List<BookModel> books = GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
+            List<BookModel> books = GetBook_All();
 
             int currentId = 1;
 
@@ -53,6 +53,16 @@ namespace eLibraryClasses.DataAccess
         public List<BookModel> GetBook_All()
         {
             return GlobalConfig.BooksFile.FullFilePath().LoadFile().ConvertToBookModels();
+        }
+
+        public List<QuestionModel> GetQuestion_All()
+        {
+            return GlobalConfig.QuizFile.FullFilePath().LoadFile().ConvertToQuestionModels();
+        }
+
+        public List<string> GetQuotes_All()
+        {
+            return GlobalConfig.QuotesFile.FullFilePath().LoadFile().ConvertToQuoteModels();
         }
     }
 }

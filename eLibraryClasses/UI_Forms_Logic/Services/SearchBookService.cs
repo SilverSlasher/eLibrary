@@ -8,6 +8,13 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class SearchBookService : ISearchBookService
     {
+        private readonly IDataConnection _dataConnection;
+
+        public SearchBookService(IDataConnection dataConnection)
+        {
+            _dataConnection = dataConnection;
+        }
+
         //Create a list of available types of search
         public List<string> FillListOfSearchTypes()
         {
@@ -29,7 +36,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
         {
             List<BookModel> output = new List<BookModel>();
 
-            List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
+            List<BookModel> allBooks = _dataConnection.GetBook_All();
 
             //If user didn't specify any value, return all available books
             if (value == "")

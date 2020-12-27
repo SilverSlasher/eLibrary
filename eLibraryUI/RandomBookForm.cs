@@ -46,7 +46,7 @@ namespace eLibraryUI
             _loggedUser = model;
 
             //Make new randomize of books every time form is open
-            _randomBookService.RandomizeBooks();
+            _randomBookService.RandomizeBooks(_loggedUser);
 
 
             //Assign randomized books to buttons

@@ -27,9 +27,7 @@ namespace eLibraryClasses.Models
 
             Genre = genre;
 
-            int pagesValue = 0;
-
-            int.TryParse(pages, out pagesValue);
+            int.TryParse(pages, out int pagesValue);
 
             Pages = pagesValue;
 

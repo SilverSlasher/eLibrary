@@ -9,6 +9,12 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class AddNewBookService : IAddNewBookService
     {
+        private readonly IDataConnection _dataConnection;
+
+        public AddNewBookService(IDataConnection dataConnection)
+        {
+            _dataConnection = dataConnection;
+        }
 
         public void ValidateForm(string authorName, string title, string pages)
         {
@@ -27,7 +33,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
         //Add book to user info, to prevent getting message about new book in next login (User add the book, so he knows about existing)
         private void UpdateUserLastLoggedInfo(UserModel loggedUser)
         {
-            List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
+            List<BookModel> allBooks = _dataConnection.GetBook_All();
             //Add to user model and info about highest Id of book in file (add info about added book in this form)
             loggedUser.LastLoggedInfo = allBooks.OrderByDescending(x => x.Id).First().Id;
 
@@ -45,7 +51,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
                 description);
 
             //Fill book model with Id and save it to file
-            GlobalConfig.Connection.CreateBook(book);
+            _dataConnection.CreateBook(book);
 
             //Add book to user info, to prevent getting message about new book in next login (User add the book, so he knows about existing)
             UpdateUserLastLoggedInfo(loggedUser);

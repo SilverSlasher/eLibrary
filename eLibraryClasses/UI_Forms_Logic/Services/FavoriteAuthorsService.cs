@@ -9,14 +9,19 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class FavoriteAuthorsService : IFavoriteAuthorsService
     {
-        private readonly List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
+        private readonly List<BookModel> _allBooks;
+
+        public FavoriteAuthorsService(IDataConnection dataConnection)
+        {
+            _allBooks = dataConnection.GetBook_All();
+        }
 
 
         public List<string> AvailableAuthors()
         {
             List<string> output = new List<string>();
 
-            foreach (BookModel book in allBooks)
+            foreach (BookModel book in _allBooks)
             {
                 if (!output.Contains(book.Author))
                 {

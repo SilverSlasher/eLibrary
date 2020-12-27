@@ -8,6 +8,13 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class RemindAccountService : IRemindAccountService
     {
+        private readonly IDataConnection _dataConnection;
+
+        public RemindAccountService(IDataConnection dataConnection)
+        {
+            _dataConnection = dataConnection;
+        }
+
         public void RemindEmail(string emailAddress)
         {
             if (emailAddress.Length == 0)
@@ -15,7 +22,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
                 throw new Exception("Nie wprowadzono adresu email");
             }
 
-            List<UserModel> users = GlobalConfig.UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
+            List<UserModel> users = _dataConnection.GetUser_All();
 
             //Check if any existing user has same email address as requested
             foreach (UserModel user in users)

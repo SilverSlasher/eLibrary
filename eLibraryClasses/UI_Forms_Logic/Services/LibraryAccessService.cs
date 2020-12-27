@@ -8,12 +8,18 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class LibraryAccessService : ILibraryAccessService
     {
+        private readonly IDataConnection _dataConnection;
+
+        public LibraryAccessService(IDataConnection dataConnection)
+        {
+            _dataConnection = dataConnection;
+        }
 
 
         //Validate info got from user with data from file, and return user model if data is correct
         public UserModel UserLoginIn(string userName, string password)
         {
-            List<UserModel> users = GlobalConfig.UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
+            List<UserModel> users = _dataConnection.GetUser_All();
 
             if (userName.Length == 0)
             {

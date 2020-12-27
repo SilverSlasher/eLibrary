@@ -8,10 +8,16 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class ReadBooksService : IReadBooksService
     {
+        private readonly IDataConnection _dataConnection;
+
+        public ReadBooksService(IDataConnection dataConnection)
+        {
+            _dataConnection = dataConnection;
+        }
         //Randomize order of list of quotes and change text of label to quote
         public string RandomizeAndReturnQuote()
         {
-            List<string> quotes = GlobalConfig.QuotesFile.FullFilePath().LoadFile().ConvertToQuoteModels();
+            List<string> quotes = _dataConnection.GetQuotes_All();
 
             //Sort the list randomly
             quotes = quotes.OrderBy(o => Guid.NewGuid()).ToList();

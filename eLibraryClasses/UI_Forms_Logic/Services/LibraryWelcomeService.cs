@@ -9,13 +9,18 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class LibraryWelcomeService : ILibraryWelcomeService
     {
-        private List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
+        private readonly List<BookModel> _allBooks;
+
+        public LibraryWelcomeService(IDataConnection dataConnection)
+        {
+            _allBooks = dataConnection.GetBook_All();
+        }
 
         private int FindMaxBookId()
         {
-            if (allBooks.Count > 0)
+            if (_allBooks.Count > 0)
             {
-                return allBooks.OrderByDescending(x => x.Id).First().Id;
+                return _allBooks.OrderByDescending(x => x.Id).First().Id;
             }
 
             return 0;
@@ -34,7 +39,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
                 loggedUser = PreventNullError(loggedUser);
 
                 //Take every book, which was added after last login of user (from max book Id of last login of user, to current max book Id)
-                foreach (BookModel book in allBooks.GetRange(loggedUser.LastLoggedInfo, range))
+                foreach (BookModel book in _allBooks.GetRange(loggedUser.LastLoggedInfo, range))
                 {
                     foreach (string author in loggedUser.FavoriteAuthors)
                     {

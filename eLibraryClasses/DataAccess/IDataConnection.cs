@@ -11,6 +11,8 @@ namespace eLibraryClasses.DataAccess
         void CreateBook(BookModel book);
         List<UserModel> GetUser_All();
         List<BookModel> GetBook_All();
+        List<QuestionModel> GetQuestion_All();
+        List<string> GetQuotes_All();
 
     }
 }

@@ -9,14 +9,14 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 {
     public class RandomBookService : IRandomBookService
     {
-        private readonly UserModel _loggedUser;
+        private readonly IDataConnection _dataConnection;
         private static bool _isAdded = false;
 
         private List<BookModel> _randomizedBooks;
 
-        public RandomBookService(UserModel loggedUser)
+        public RandomBookService(IDataConnection dataConnection)
         {
-            _loggedUser = loggedUser;
+            _dataConnection = dataConnection;
         }
 
         public List<BookModel> GetRandomizedBooks()
@@ -24,18 +24,16 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             return _randomizedBooks;
         }
 
-        public void RandomizeBooks()
+        public void RandomizeBooks(UserModel loggedUser)
         {
-            _randomizedBooks = BooksNotUsedBefore();
+            _randomizedBooks = BooksNotUsedBefore(loggedUser);
         }
 
 
 
-        private List<BookModel> BooksNotUsedBefore()
+        private List<BookModel> BooksNotUsedBefore(UserModel loggedUser)
         {
-            List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
-
-            List<BookModel> output = new List<BookModel>();
+            List<BookModel> allBooks = _dataConnection.GetBook_All();
 
             List<BookModel> userUsedBooks = new List<BookModel>();
 
@@ -43,14 +41,14 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             List<BookModel> booksToDelete = new List<BookModel>();
 
             //If any of user list is not created. Create a new list
-            PreventNullError(_loggedUser);
+            PreventNullError(loggedUser);
 
-            foreach (BookModel book in _loggedUser.ReadBooks)
+            foreach (BookModel book in loggedUser.ReadBooks)
             {
                 userUsedBooks.Add(book);
             }
 
-            foreach (BookModel book in _loggedUser.ToReadBooks)
+            foreach (BookModel book in loggedUser.ToReadBooks)
             {
                 userUsedBooks.Add(book);
             }
@@ -75,7 +73,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             }
 
             //Save all books not read or selected "to read" to the variable
-            output = allBooks;
+            var output = allBooks;
 
             //Randomize and return books
             return output.OrderBy(o => Guid.NewGuid()).ToList(); ;

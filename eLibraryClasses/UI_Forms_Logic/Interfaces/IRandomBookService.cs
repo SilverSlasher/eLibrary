@@ -9,6 +9,6 @@ namespace eLibraryClasses.UI_Forms_Logic.Interfaces
 
         List<BookModel> GetRandomizedBooks();
 
-        void RandomizeBooks();
+        void RandomizeBooks(UserModel loggedUser);
     }
 }

@@ -17,33 +17,37 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
          */
 
 
-
         //Every answer has 2 items. Second is attribute of answer so AnswerAttribute is 1, and variable is more understandable
         //The attribute is the best-matching genre to answer (in first answers) or number of pages (in last answer)
         private const int AnswerAttribute = 1;
 
-        private bool areBooksMatchedByGenre = false;
+        private bool _areBooksMatchedByGenre = false;
 
-        private bool areBooksMatchedByPages = false;
+        private bool _areBooksMatchedByPages = false;
 
-        private List<QuestionModel> Questions = GlobalConfig.QuizFile.FullFilePath().LoadFile().ConvertToQuestionModels();
+        private readonly List<QuestionModel> _questions;
 
-        private List<BookModel> allBooks = GlobalConfig.Connection.GetBook_All();
+        private readonly List<BookModel> _allBooks;
 
         public List<BookModel> MatchedBooks = new List<BookModel>();
 
-        private int CurrentStepIndex;
+        private int _currentStepIndex;
 
-        private bool isAddedNow = false;
+        private bool _isAddedNow = false;
 
+        public QuizService(IDataConnection dataConnection)
+        {
+            _questions = dataConnection.GetQuestion_All();
+            _allBooks = dataConnection.GetBook_All();
+        }
 
         public int GetCurrentStepIndex()
         {
-            return this.CurrentStepIndex;
+            return _currentStepIndex;
         }
         public void SetCurrentStepIndex(int stepNumber)
         {
-            this.CurrentStepIndex = stepNumber;
+            _currentStepIndex = stepNumber;
         }
 
         public BookModel GetMatchedBook(int index)
@@ -53,62 +57,56 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 
         public QuestionModel GetQuestion(int stepNumber)
         {
-            return this.Questions[stepNumber];
+            return _questions[stepNumber];
         }
 
         //Taking attribute from chosen answer, and add books with right genre from all books, to matched books.
         private void RefreshMatchedBooksByGenre(int selectedOption)
         {
-            if (selectedOption == 1 && !areBooksMatchedByGenre)
+            if (selectedOption == 1 && !_areBooksMatchedByGenre)
             {
-                foreach (BookModel book in allBooks)
-                {
-                    if (Questions[CurrentStepIndex].FirstAnswer[AnswerAttribute] == book.Genre)
-                    {
-                        MatchedBooks.Add(book);
-                    }
-                }
-
-                areBooksMatchedByGenre = true;
-            }
-
-            if (selectedOption == 2 && !areBooksMatchedByGenre)
-            {
-                foreach (BookModel book in allBooks)
-                {
-                    //Find all matching books in all books with genre took from answer attribute
-                    if (Questions[CurrentStepIndex].SecondAnswer[AnswerAttribute] == book.Genre)
-                    {
-                        MatchedBooks.Add(book);
-                    }
-                }
-                areBooksMatchedByGenre = true;
-            }
-
-            if (selectedOption == 3 && !areBooksMatchedByGenre)
-            {
-                //It's the specific one. Answers are known before, and the third one is correct to both genres, so both have to be added
-                foreach (BookModel book in allBooks)
-                {
-                    if (Questions[CurrentStepIndex].FirstAnswer[AnswerAttribute] == book.Genre ||
-                        Questions[CurrentStepIndex].SecondAnswer[AnswerAttribute] == book.Genre)
-                    {
-                        MatchedBooks.Add(book);
-                    }
-                }
-
-                areBooksMatchedByGenre = true;
-            }
-
-            if (selectedOption == 4 && !areBooksMatchedByGenre)
-            {
-                //Answers are known before. The fourth one didn't specify any genres, so every book is correct
-                foreach (BookModel book in allBooks)
+                foreach (var book in _allBooks.Where(book => _questions[_currentStepIndex].FirstAnswer[AnswerAttribute] == book.Genre))
                 {
                     MatchedBooks.Add(book);
                 }
 
-                areBooksMatchedByGenre = true;
+                _areBooksMatchedByGenre = true;
+            }
+
+            if (selectedOption == 2 && !_areBooksMatchedByGenre)
+            {
+                foreach (var book in _allBooks.Where(book => _questions[_currentStepIndex].SecondAnswer[AnswerAttribute] == book.Genre))
+                {
+                    MatchedBooks.Add(book);
+                }
+
+                _areBooksMatchedByGenre = true;
+            }
+
+            if (selectedOption == 3 && !_areBooksMatchedByGenre)
+            {
+                //It's the specific one. Answers are known before, and the third one is correct to both genres, so both have to be added
+                foreach (BookModel book in _allBooks)
+                {
+                    if (_questions[_currentStepIndex].FirstAnswer[AnswerAttribute] == book.Genre ||
+                        _questions[_currentStepIndex].SecondAnswer[AnswerAttribute] == book.Genre)
+                    {
+                        MatchedBooks.Add(book);
+                    }
+                }
+
+                _areBooksMatchedByGenre = true;
+            }
+
+            if (selectedOption == 4 && !_areBooksMatchedByGenre)
+            {
+                //Answers are known before. The fourth one didn't specify any genres, so every book is correct
+                foreach (BookModel book in _allBooks)
+                {
+                    MatchedBooks.Add(book);
+                }
+
+                _areBooksMatchedByGenre = true;
             }
 
         }
@@ -124,27 +122,42 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             //Option 1
             try
             {
-                booksToDelete = BooksNotMatchingByPages(selectedOption, 1, Questions[CurrentStepIndex].FirstAnswer[AnswerAttribute]);
+                booksToDelete = BooksNotMatchingByPages(selectedOption, 1, _questions[_currentStepIndex].FirstAnswer[AnswerAttribute]);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
+
             //Option 2
             try
             {
-                booksToDelete = BooksNotMatchingByPages(selectedOption, 2, Questions[CurrentStepIndex].SecondAnswer[AnswerAttribute]);
+                booksToDelete = BooksNotMatchingByPages(selectedOption, 2, _questions[_currentStepIndex].SecondAnswer[AnswerAttribute]);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
+
             //Option 3
             try
             {
-                booksToDelete = BooksNotMatchingByPages(selectedOption, 3, Questions[CurrentStepIndex].ThirdAnswer[AnswerAttribute]);
+                booksToDelete = BooksNotMatchingByPages(selectedOption, 3, _questions[_currentStepIndex].ThirdAnswer[AnswerAttribute]);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
+
             //Option 4
             try
             {
-                booksToDelete = BooksNotMatchingByPages(selectedOption, 4, Questions[CurrentStepIndex].FourthAnswer[AnswerAttribute]);
+                booksToDelete = BooksNotMatchingByPages(selectedOption, 4, _questions[_currentStepIndex].FourthAnswer[AnswerAttribute]);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
 
             //Deleting from matched books all books which are shorter than requested
             foreach (BookModel book in booksToDelete)
@@ -159,7 +172,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             List<BookModel> booksToDelete = new List<BookModel>();
 
             //Every last answer in form has attribute with number of pages. Compare number of pages with matched books.
-            if (selectedOption == numberOfAnswer && !areBooksMatchedByPages)
+            if (selectedOption == numberOfAnswer && !_areBooksMatchedByPages)
             {
                 foreach (BookModel book in MatchedBooks)
                 {
@@ -169,7 +182,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
                     }
                 }
 
-                areBooksMatchedByPages = true;
+                _areBooksMatchedByPages = true;
 
                 return booksToDelete;
             }
@@ -180,14 +193,14 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
         public void FirstAnswerMatchingMethod(int selectedOption)
         {
             //If index is 0, books are not matched, because first answer in first loop didn't send complete information and has to be filled with second one
-            if (CurrentStepIndex != 0)
+            if (_currentStepIndex != 0)
             {
                 //In this loop info is complete so books can be matched (It's quite unintuitive, because answers&Questions are constant)
                 RefreshMatchedBooksByGenre(selectedOption);
             }
 
             //In step number 3, question is about length 
-            if (CurrentStepIndex == 3)
+            if (_currentStepIndex == 3)
             {
                 //Matching books by number of pages
                 RefreshMatchedBooksByPages(selectedOption);
@@ -200,7 +213,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             RefreshMatchedBooksByGenre(selectedOption);
 
             //In step number 3, question is about length 
-            if (CurrentStepIndex == 3)
+            if (_currentStepIndex == 3)
             {
                 //Matching books by number of pages
                 RefreshMatchedBooksByPages(selectedOption);
@@ -210,14 +223,14 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
         public void ThirdAnswerMatchingMethod(int selectedOption)
         {
             //If index is 0, books are not matched, because first answer in first loop didn't send complete information and has to be filled with second one
-            if (CurrentStepIndex != 0)
+            if (_currentStepIndex != 0)
             {
                 //In this loop info is complete so books can be matched (It's quite unintuitive, because answers&Questions are constant)
                 RefreshMatchedBooksByGenre(selectedOption);
             }
 
             //In step number 3, question is about length 
-            if (CurrentStepIndex == 3)
+            if (_currentStepIndex == 3)
             {
                 //Matching books by number of pages
                 RefreshMatchedBooksByPages(selectedOption);
@@ -230,7 +243,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             RefreshMatchedBooksByGenre(selectedOption);
 
             //In step number 3, question is about length 
-            if (CurrentStepIndex == 3)
+            if (_currentStepIndex == 3)
             {
                 //Matching books by number of pages
                 RefreshMatchedBooksByPages(selectedOption);
@@ -251,7 +264,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
             }
         }
 
-        //I didn't disabled option of showing books, which user read before, because something it's nice to remind yourself about good one
+        //I didn't disabled option of showing books, which user read before, because sometimes it's nice to remind yourself about good one
         private bool VerifyBookExistingInUserBookshelf(ref UserModel loggedUser)
         {
             List<BookModel> userUsedBooks = new List<BookModel>();
@@ -287,20 +300,20 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
         //If it's not first one, so every info is already got, and jump to index number 3 what is choosing length of book
         public void SetNextStepIndex(int jumpTo)
         {
-            if (CurrentStepIndex == 0)
+            if (_currentStepIndex == 0)
             {
-                CurrentStepIndex = jumpTo;
+                _currentStepIndex = jumpTo;
             }
             else
             {
-                CurrentStepIndex = 3;
+                _currentStepIndex = 3;
             }
         }
 
         public void TryToAddBookToBookshelf(UserModel loggedUser)
         {
             //If user added book to bookshelf a moment before, give a warning
-            if (isAddedNow)
+            if (_isAddedNow)
             {
                 throw new Exception("Dodałeś już tę książkę do swojej bazy!");
             }
@@ -318,7 +331,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
 
             DataConnectionService.UpdateDataOfLoggedUser(loggedUser).SaveToUsersFile();
 
-            isAddedNow = true;
+            _isAddedNow = true;
         }
 
         public void RandomizeMatchedBooks()

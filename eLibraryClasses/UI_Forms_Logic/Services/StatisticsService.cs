@@ -70,9 +70,7 @@ namespace eLibraryClasses.UI_Forms_Logic.Services
                 userAllBooks.Add(book);
             }
 
-            Genres genresCount = new Genres();
-
-            genresCount = SetStartingValuesOfGenres();
+            var genresCount = SetStartingValuesOfGenres();
 
             //Count the number of repetitions of each book genre
             foreach (BookModel book in userAllBooks)
